@@ -1,0 +1,15 @@
+form {
+  position: relative;
+  top: 65px;
+  left: 64px;
+  width: 65%;
+  div {
+    .size {
+      width: 100%;
+    }
+    .quantity {
+      width: 24%;
+    margin-right: 13px;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+form {
+  width: 95%;
+  margin-left: 3%;
+  h4 {
+    color: #545e6f;
+  }
+  mat-radio-group,
+  section {
+    display: flex;
+    flex-direction: column;
+    color: #545e6f;
+  }
+}
+
+.reset-filters-btn {
+  margin-top: 13px;
+  button {
+    width: 95%;
+    margin-left: 3%;
+  }
+}

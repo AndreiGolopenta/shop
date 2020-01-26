@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="user-profile">
+    <span 
+      class="account"
+      [ngClass]="{'active': userToken }"
+      (click)="userAccount()">
+      My Account
+      <i class="material-icons">keyboard_arrow_down</i>
+    </span>
+    <span> | </span>
+    <span
+      *ngIf="!userToken; else logout" 
+      class="login" 
+      (click)="logIn()">
+      Login
+      <i class="material-icons">keyboard_arrow_down</i>
+    </span>
+    <ng-template #logout>
+      <span 
+        class="login"
+        (click)="logoutAction()">
+        Logout
+        <i class="material-icons">keyboard_arrow_down</i>
+      </span>
+    </ng-template>
+  </div>
+  <i
+    [@cart]="cartAnimation ? 'initial' : 'final'"
+    class="material-icons cart-logo"
+    [matBadge]="cartQuantity"
+    matBadgeColor="warn"
+    (click)="viewCart()"
+  >
+    shopping_cart
+  </i>
+  <div class="price">
+    <span></span>
+    <h2 (click)="viewCart()">CART</h2>
+    <span class="price-info"
+      >{{ cartQuantity }} Articles |
+      {{ cartTotal == 0 ? '0.00' : cartTotal }} &euro;</span
+    >
+  </div>
+</div>

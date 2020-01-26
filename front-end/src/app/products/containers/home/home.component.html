@@ -1,0 +1,11 @@
+<div class="banner">
+  <img src="assets/banner/freeride_lofoten.jpg" alt="shop-banner" />
+  <h1>Outdoor <br /><span></span> Clothing</h1>
+</div>
+
+<app-home-category
+  *ngFor="let item of (data | async) | keyvalue"
+  [categoryName]="convert(item.key)"
+  [category]="item.value"
+>
+</app-home-category>

@@ -1,0 +1,28 @@
+<div>
+  <div class="error" *ngIf="errorMessage">
+    <app-error-message [color]="color">
+      <p class="text">
+        {{ errorMessage }}
+      </p>
+    </app-error-message>
+  </div>
+  <mat-card class="log-in">
+    <form [formGroup]="form" novalidate (ngSubmit)="logIn()">
+      <h3>Login</h3>
+      <app-input-field
+        class="input-component"
+        *ngFor="let element of data"
+        [parent]="form"
+        [element]="element"
+        [required]="required"
+      >
+      </app-input-field>
+      <button type="submit" color="primary" mat-stroked-button>
+        Log In
+      </button>
+    </form>
+    <div>
+      Don't have an account? <a routerLink="/auth/sign-up">Register Now</a>
+    </div>
+  </mat-card>
+</div>

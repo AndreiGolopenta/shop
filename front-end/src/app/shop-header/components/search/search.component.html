@@ -1,0 +1,18 @@
+<form
+  [formGroup]="form"
+  novalidate
+  class="example-form"
+>
+  <mat-form-field
+    [formGroup]="form"
+    novalidate
+    (ngSubmit)="onSubmit()"
+    class="example-full-width"
+  >
+    <input
+      formControlName="search"
+      matInput
+      placeholder="Enter search terms / product..."
+    />
+  </mat-form-field>
+</form>

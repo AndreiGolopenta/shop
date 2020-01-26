@@ -1,0 +1,18 @@
+<form [formGroup]="form" novalidate (ngSubmit)="handleSubmit()">
+  <h4>Buy As Existing Customer</h4>
+  <mat-form-field>
+    <input formControlName="email" type="email" matInput placeholder="Email" />
+    <mat-icon matSuffix color="primary">email</mat-icon>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      formControlName="password"
+      type="password"
+      matInput
+      placeholder="Password"
+    />
+    <mat-icon matSuffix color="primary">lock</mat-icon>
+  </mat-form-field>
+  <div class="info">Don't have an account? <a routerLink="/auth/sign-up">Register Now</a></div>
+  <button mat-stroked-button type="submit">Login</button>
+</form>

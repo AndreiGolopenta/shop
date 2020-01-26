@@ -1,0 +1,19 @@
+<mat-card class="container">
+  <div class="info-stock">
+    <span>Selection:</span> {{ selectionStock ? selectionStock : " - " }} of
+    {{ stock ? stock : " - " }} Item(s)
+  </div>
+  <mat-form-field [formGroup]="form">
+    <label for="select" id="select">
+      Order by
+    </label>
+    <mat-select
+      formControlName="sort" 
+      id="select"
+      (selectionChange)="onSelect()">
+      <mat-option *ngFor="let option of sortByOptions" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-card>

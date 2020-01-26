@@ -1,0 +1,11 @@
+@import '../../../../partial';
+
+.container {
+  box-shadow: $box-shadow;
+  .text {
+    font-size: 15px;
+    font-weight: 400;
+    color: #545e6f;
+    padding-right: 25px;
+  }
+}

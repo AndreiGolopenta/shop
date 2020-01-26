@@ -1,0 +1,42 @@
+<mat-form-field [formGroup]="parent">
+  <input
+    [formControlName]="formControlName"
+    [type]="inputType"
+    matInput
+    [placeholder]="element.name | titlecase"
+    [required]="required"
+  />
+  <mat-icon matSuffix color="primary">
+    {{ element.icon }}
+  </mat-icon>
+
+  <mat-error [ngSwitch]="element.name">
+    <ng-container *ngSwitchCase="'email'">
+      <span *ngIf="requiredError">Email is <strong>required.</strong></span>
+      <span *ngIf="emailError">
+        <span>Please enter a <strong>valid</strong> email address.</span>
+      </span>
+    </ng-container>
+    <ng-container *ngSwitchCase="'repeat Password'">
+      <span *ngIf="minLengthError">
+        Password must have at least <strong>8</strong> characters
+      </span>
+      <span *ngIf="!minLengthError && requiredError">
+        Password is <strong>required.</strong>
+      </span>
+    </ng-container>
+    <ng-container *ngSwitchCase="'password'">
+      <span *ngIf="minLengthError">
+        Password must have at least <strong>8</strong> characters
+      </span>
+      <span *ngIf="!minLengthError && requiredError">
+        Password is <strong>required.</strong>
+      </span>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+      <span *ngIf="requiredError">
+        {{ element.name | titlecase }} is <strong>required.</strong>
+      </span>
+    </ng-container>
+  </mat-error>
+</mat-form-field>

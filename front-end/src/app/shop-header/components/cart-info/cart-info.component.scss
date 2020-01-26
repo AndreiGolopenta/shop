@@ -1,0 +1,67 @@
+.container {
+  position: relative;
+  width: 80%;
+  height: 100%;
+  margin-left: 20px;
+  .user-profile {
+    position: absolute;
+    left: 63px;
+    top: -12px;
+    font-size: 14px;
+    .account {
+      cursor: not-allowed;
+      &.active {
+        cursor: pointer;
+        font-weight: 600;
+        &:hover {
+          color: #3949ab;
+        }
+      }
+    }
+    .login {
+      margin-left: 5px;
+      cursor: pointer;
+      &:hover {
+        color: #3949ab;
+        font-weight: 600;
+      }
+    }
+    i {
+      position: relative;
+      top: 3px;
+      font-size: 15px;
+    }
+  }
+  .cart-logo {
+    position: relative;
+    top: 20px;
+    font-size: 35px;
+    cursor: pointer;
+    span {
+      left: 20px;
+    }
+  }
+  .price {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    width: 173px;
+    height: 50px;
+    top: 7px;
+    left: 46px;
+    span {
+      display: block;
+      width: 108px;
+    }
+    h2 {
+      cursor: pointer;
+      margin-left: 110px;
+      margin: 0;
+      text-align: end;
+    }
+    .price-info {
+      text-align: end;
+      width: 100%;
+    }
+  }
+}

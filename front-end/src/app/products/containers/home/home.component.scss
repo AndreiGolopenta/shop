@@ -1,0 +1,19 @@
+.banner {
+  margin: -20px -35px 20px -35px;
+  position: relative;
+  img {
+    width: 100%;
+    height: auto;
+  }
+  h1 {
+    position: absolute;
+    top: 30%;
+    left: 5%;
+    color: #fff;
+    font-size: 2.3vw;
+    text-shadow: -2px 0px 7px #545e6f;
+    span {
+      margin-left: 5vw;
+    }
+  }
+}

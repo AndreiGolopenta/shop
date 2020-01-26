@@ -1,0 +1,42 @@
+@import '../../../../partial';
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 450px;
+}
+
+.error {
+  position: relative;
+  top: -10px;
+  .text {
+    font-size: 15px;
+    font-weight: 400;
+    color: #545e6f;
+    padding-right: 25px;
+  }
+}
+
+.log-in {
+  width: 400px;
+  color: #545e6f;
+  padding: 20px 30px;
+  box-shadow: $box-shadow;
+  margin: auto;
+  form {
+    display: flex;
+    flex-direction: column;
+    .input-component {
+      width: 100%;
+    }
+    button {
+      margin-top: 20px;
+    }
+  }
+  div {
+    padding: 20px 10px 10px 10px;
+    text-align: center;
+    font-size: 13px;
+  }
+}

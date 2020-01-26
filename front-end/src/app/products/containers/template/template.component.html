@@ -1,0 +1,10 @@
+<app-component-template 
+  [filters]="filters"
+  [filterData]="filterData"
+  [products]="products$ | async"
+  [sortedBy]="sortedBy"
+  (applyFilters)="handleApplyFilters($event)"
+  (removeFilters)="handleRemoveFilters($event)"
+  (setSortBy)="handleSortBy($event)"
+  (viewProduct)="handleViewProduct($event)">
+</app-component-template>

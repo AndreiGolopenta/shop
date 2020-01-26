@@ -1,0 +1,43 @@
+.main-container {
+  display: flex;
+  .left-container {
+    width: 70%;
+    box-sizing: border-box;
+    min-height: 650px;
+    .sort-bar {
+      margin-bottom: 10px;
+    }
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .spinner {
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .pagination {
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      pagination-controls {
+        position: relative;
+        left: -24px;
+      }
+      &.active {
+        position: relative;
+        top: 175px;
+      }
+    }
+    h3 {
+      height: 100px;
+      line-height: 100px;
+      text-align: center;
+    }
+  }
+  .right-container {
+    width: 30%;
+    box-sizing: border-box;
+  }
+}

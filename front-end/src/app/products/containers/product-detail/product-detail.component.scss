@@ -1,0 +1,28 @@
+mat-card {
+  color: #545e6f;
+  min-height: 400px;
+  mat-grid-tile {
+    .product-name {
+      position: absolute;
+      left: 20px;
+      top: 0;
+    }
+    img {
+      width: 300px;
+      height: auto;
+      padding: 20px 0;
+    }
+  }
+  .actions {
+    margin-top: 20px;
+    button {
+      position: relative;
+      left: 20px;
+    }
+  }
+  &.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

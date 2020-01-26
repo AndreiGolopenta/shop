@@ -1,0 +1,21 @@
+<div>
+  <mat-tab-group>
+    <mat-tab label="Description">
+      <p>{{ product.description }}</p>
+    </mat-tab>
+    <mat-tab label="Fact Sheet">
+      <mat-list dense>
+        <mat-list-item
+          *ngFor="let el of productList; index as i"
+          [ngSwitch]="el"
+        >
+          <strong *ngSwitchCase="'name'"> Product Name: </strong>
+          <strong *ngSwitchCase="'for'"> For women/men/unisex: </strong>
+          <strong *ngSwitchDefault> {{ el | titlecase }}: </strong>
+          <span>{{ product[el] }}</span>
+          <mat-divider *ngIf="i !== divider"></mat-divider>
+        </mat-list-item>
+      </mat-list>
+    </mat-tab>
+  </mat-tab-group>
+</div>

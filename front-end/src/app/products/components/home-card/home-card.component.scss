@@ -1,0 +1,15 @@
+.product-card {
+  max-width: 140px;
+  height: 175px;
+  margin: 0 10px;
+  cursor: pointer;
+  img {
+    width: 140px;
+    height: auto;
+  }
+  p {
+    height: 48px;
+    font-size: 13px;
+    color: #545e6f;
+  }
+}

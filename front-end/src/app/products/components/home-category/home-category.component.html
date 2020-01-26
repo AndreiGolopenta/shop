@@ -1,0 +1,15 @@
+<div class="container">
+  <mat-card 
+    matRipple class="category" [routerLink]="route">
+    {{ formatName }}
+  </mat-card>
+  <div class="products">
+    <app-home-card
+      class="product-card"
+      *ngFor="let product of category"
+      [product]="product"
+      [categoryName]="categoryName"
+    >
+    </app-home-card>
+  </div>
+</div>

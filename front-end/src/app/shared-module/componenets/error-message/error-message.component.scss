@@ -1,0 +1,26 @@
+@import '../../../../partial';
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  .container {
+    box-shadow: $box-shadow;
+    color: #545e6f;
+    border-radius: 2px;
+    margin: 10px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    .info {
+      font-size: 16px;
+      padding: 0 10px;
+      font-weight: 500;
+    }
+    .icon {
+      padding-left: 14px;
+    }
+  }
+}

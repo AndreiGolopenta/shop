@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="error" *ngIf="errorMessage">
+    <app-error-message [color]="color">
+      <p class="text">
+        {{ errorMessage }}
+      </p>
+    </app-error-message>
+  </div>
+  <mat-card class="sign-up">
+    <form [formGroup]="form" novalidate (ngSubmit)="signUp()">
+      <h3>Create Account</h3>
+      <app-input-field
+        class="input-component"
+        *ngFor="let element of data"
+        [parent]="form"
+        [element]="element"
+        [required]="required"
+      >
+      </app-input-field>
+      <mat-error *ngIf="error">
+        The two given values are not <strong>identical</strong>.
+      </mat-error>
+      <button
+        type="submit"
+        color="primary"
+        mat-stroked-button
+        [disabled]="form.invalid"
+      >
+        Sign Up
+      </button>
+    </form>
+    <div>Already have an account? <a routerLink="/auth/sign-in">Login</a></div>
+  </mat-card>
+</div>
