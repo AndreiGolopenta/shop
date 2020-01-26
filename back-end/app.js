@@ -11,7 +11,7 @@ const usersRoutes = require('./api/routes/users');
 const ordersRoutes = require('./api/routes/orders');
 
 mongoose.connect(
-  'mongodb+srv://admin:admin@shopdb-qwlzb.mongodb.net/test?retryWrites=true&w=majority',
+  '',
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
