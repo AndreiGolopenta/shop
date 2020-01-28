@@ -4,7 +4,10 @@
       <app-logo></app-logo>
     </div>
     <div class="search">
-      <app-search></app-search>
+      <app-search 
+        [products]="searchProducts$ | async"
+        (productDetail)="handleProductDetail($event)">
+      </app-search>
     </div>
     <div class="cart">
      <app-cart-info 

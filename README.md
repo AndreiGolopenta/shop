@@ -17,7 +17,7 @@ Actions that can be made:
 * add/remove/update the cart;
 * filter the products;
 * sorting the products;
-* searching products - under development
+* searching products (with autocomplete); 
 * view user profile (order history / change password, address) - under development
 
 

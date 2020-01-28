@@ -12,8 +12,15 @@
 }
 
 .example-full-width {
-  width: 60%;
+  width: 90%;
   font-size: 15px;
   position: relative;
   top: 12px;
+}
+
+.product-image {
+  vertical-align: middle;
+  margin-right: 8px;
+  width: 30px;
+  height: auto;
 }

@@ -1,8 +1,4 @@
-<form
-  [formGroup]="form"
-  novalidate
-  class="example-form"
->
+<form [formGroup]="form" novalidate class="example-form">
   <mat-form-field
     [formGroup]="form"
     novalidate
@@ -10,9 +6,25 @@
     class="example-full-width"
   >
     <input
+      #input
+      id="search"
       formControlName="search"
       matInput
+      [matAutocomplete]="auto"
       placeholder="Enter search terms / product..."
     />
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option
+        (click)="viewProduct(product, input)"
+        *ngFor="let product of products"
+        [value]="input.value"
+      >
+        <img class="product-image" [src]="product.image" alt="product" />
+        <span>{{ product.name }}</span>
+      </mat-option>
+      <mat-option *ngIf="noProductsMessage">
+        No items found for your selection.
+      </mat-option>
+    </mat-autocomplete>
   </mat-form-field>
 </form>

@@ -3,9 +3,18 @@ import { Nav } from './models/nav.interface';
 import * as fromStore from './store';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, fromEvent } from 'rxjs';
+import {
+  map,
+  debounceTime,
+  distinctUntilChanged,
+  pluck,
+  switchMap,
+  filter
+} from 'rxjs/operators';
 import { ProductFromCart, TableData } from './models/productFromCart.interface';
+import { SearchProductsService } from './services/search-products.service';
+import { Product } from './models/product.interface';
 
 @Component({
   selector: 'app-root',
@@ -13,13 +22,24 @@ import { ProductFromCart, TableData } from './models/productFromCart.interface';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  nav: Nav[] = [
+    { name: 'Home', route: '/products', exact: true },
+    { name: 'Shirts & Tops', route: '/products/shirts&tops', exact: false },
+    { name: 'Shorts & Pants', route: '/products/shorts&pants', exact: false },
+    { name: 'Jackets & Vests', route: '/products/jackets&vests', exact: false },
+    { name: 'Shoes', route: '/products/shoes', exact: false },
+    { name: 'Gloves', route: '/products/gloves', exact: false }
+  ];
+
   cartQuantity$: Observable<number>;
   cartTotal$: Observable<number>;
   userToken$: Observable<string>;
+  searchProducts$: Observable<Product[]>;
 
   constructor(
     private store: Store<fromStore.StoreState>,
-    private router: Router
+    private router: Router,
+    private searchProductsService: SearchProductsService
   ) {}
 
   ngOnInit() {
@@ -34,16 +54,20 @@ export class AppComponent implements OnInit {
     this.cartTotal$ = this.store.select(fromStore.getCartTotal);
 
     this.userToken$ = this.store.select(fromStore.getUserToken);
-  }
 
-  nav: Nav[] = [
-    { name: 'Home', route: '/products', exact: true },
-    { name: 'Shirts & Tops', route: '/products/shirts&tops', exact: false },
-    { name: 'Shorts & Pants', route: '/products/shorts&pants', exact: false },
-    { name: 'Jackets & Vests', route: '/products/jackets&vests', exact: false },
-    { name: 'Shoes', route: '/products/shoes', exact: false },
-    { name: 'Gloves', route: '/products/gloves', exact: false }
-  ];
+    const inputSearch = document.querySelector('#search');
+
+    this.searchProducts$ = fromEvent(inputSearch, 'input').pipe(
+      debounceTime(1000),
+      pluck('target', 'value'),
+      distinctUntilChanged(),
+      filter(Boolean),
+      switchMap((value: string) => {
+        const queryParams = encodeURIComponent(value);
+        return this.searchProductsService.searchProducts(queryParams);
+      })
+    );
+  }
 
   handlleViewCart() {
     this.router.navigate(['/shoppingCart']);
@@ -61,4 +85,13 @@ export class AppComponent implements OnInit {
     await this.router.navigate(['/']);
     this.store.dispatch(new fromStore.UserLogOut());
   }
+
+  handleProductDetail(product: Product) {
+    const category = product.category
+      .split(' ')
+      .join('')
+      .toLowerCase();
+    this.router.navigate([`/products/${category}`, product._id]);
+  }
+
 }
