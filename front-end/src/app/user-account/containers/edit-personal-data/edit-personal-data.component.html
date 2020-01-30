@@ -1,0 +1,33 @@
+<div class="actions">
+  <app-user-actions> </app-user-actions>
+</div>
+<div class="container">
+  <div class="message" *ngIf="responseMessage">
+    <app-error-message [color]="color">
+      <p class="text">
+        {{ responseMessage }}
+      </p>
+    </app-error-message>
+  </div>
+  <mat-card class="edit-personal-data" *ngIf="user">
+    <form [formGroup]="form" novalidate (ngSubmit)="handleSubmit()">
+      <h3>Edit Personal Data</h3>
+      <app-input-field
+        class="input-component"
+        *ngFor="let element of data"
+        [parent]="form"
+        [element]="element"
+        [required]="required"
+      >
+      </app-input-field>
+      <button
+        type="submit"
+        [disabled]="form.invalid"
+        color="primary"
+        mat-stroked-button
+      >
+        Send Request
+      </button>
+    </form>
+  </mat-card>
+</div>

@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRippleModule } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 const materialModules: any[] = [
   MatButtonModule,
@@ -35,7 +36,8 @@ const materialModules: any[] = [
   MatInputModule,
   MatSelectModule,
   MatRippleModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  MatPaginatorModule
 ];
 
 @NgModule({

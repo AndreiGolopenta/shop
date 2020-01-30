@@ -17,6 +17,14 @@
         <span>Please enter a <strong>valid</strong> email address.</span>
       </span>
     </ng-container>
+    <ng-container *ngSwitchCase="'current Password'">
+      <span *ngIf="minLengthError">
+        Password must have at least <strong>8</strong> characters
+      </span>
+      <span *ngIf="!minLengthError && requiredError">
+        Password is <strong>required.</strong>
+      </span>
+    </ng-container>
     <ng-container *ngSwitchCase="'repeat Password'">
       <span *ngIf="minLengthError">
         Password must have at least <strong>8</strong> characters

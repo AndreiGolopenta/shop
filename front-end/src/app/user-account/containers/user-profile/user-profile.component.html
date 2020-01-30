@@ -1,1 +1,28 @@
-<p>user-profile works!</p>
+<div class="actions">
+  <app-user-actions> </app-user-actions>
+</div>
+<div class="container">
+  <app-error-message [color]="color">
+    <p class="text">
+      You are logged in as <strong>{{ user$ | async }}</strong>
+    </p>
+  </app-error-message>
+  <form [formGroup]="form" novalidate (ngSubmit)="deleteAccount()">
+    <h3>Delete Account</h3>
+    <mat-form-field>
+      <input type="text" formControlName="delete" matInput />
+      <mat-hint>Type delete to confirm.</mat-hint>
+      <mat-icon matSuffix color="warn">
+        delete_forever
+      </mat-icon>
+    </mat-form-field>
+    <button
+      [disabled]="form.invalid"
+      mat-stroked-button
+      color="warn"
+      type="submit"
+    >
+      Delete Account
+    </button>
+  </form>
+</div>

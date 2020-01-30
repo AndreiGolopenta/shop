@@ -1,0 +1,10 @@
+@import '../../../../partial';
+
+:host {
+  display: flex;
+}
+
+.container {
+  padding-left: 20px;
+  @include container;
+}

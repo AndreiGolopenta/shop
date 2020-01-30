@@ -1,0 +1,24 @@
+@import '../../../../partial';
+
+:host {
+  display: flex;
+}
+
+.container {
+  @include container;
+  .edit-personal-data {
+    color: #545e6f;
+    margin: auto;
+    width: 400px;
+    button {
+      margin-top: 15px;
+    }
+  }
+  .message {
+    position: relative;
+    top: -10px;
+    .text {
+      @include text;
+    }
+  }
+}

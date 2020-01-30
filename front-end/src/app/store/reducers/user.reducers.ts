@@ -34,6 +34,14 @@ export function reducer(
       };
     }
 
+    case fromUser.USER_UPDATE_NAME: {
+      const userName = action.payload;
+      return {
+        ...state,
+        userName
+      };
+    }
+
     default: {
       return state;
     }

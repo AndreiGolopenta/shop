@@ -5,7 +5,7 @@ exports.update_product = async (req, res, next) => {
     const id = req.params.id;
     const { propName, value } = req.body;
     const update = { [propName]: value };
-    await Product.update({ _id: id }, { $set: update }).exec();
+    await Product.updateOne({ _id: id }, { $set: update }).exec();
     res.status(200).json({ message: 'Product was updated' });
   } catch (err) {
     res.status(500).json({ message: err });

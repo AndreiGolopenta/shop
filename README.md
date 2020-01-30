@@ -18,7 +18,7 @@ Actions that can be made:
 * filter the products;
 * sorting the products;
 * searching products (with autocomplete); 
-* view user profile (order history / change password, address) - under development
+* view user profile (order history / change password / edit user personal data / delete account)
 
 
 __Screenshot__

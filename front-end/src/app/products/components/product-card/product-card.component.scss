@@ -3,6 +3,7 @@
   position: relative;
   margin: 8px;
   color: #545e6f;
+  cursor: pointer;
   img {
     margin-top: 5px;
   }
@@ -11,8 +12,7 @@
     font-weight: 500;
   }
   .product-detail {
-    display: flex;
-    justify-content: space-around;
+    height: 40px;
     background: #f1f2f5;
     margin: 0;
     padding: 0;
@@ -22,6 +22,7 @@
     width: 100%;
     .prize {
       position: relative;
+      top: 4px;
       font-weight: 600;
       color: #e10000;
       .prize-part-one {

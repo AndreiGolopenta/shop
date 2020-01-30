@@ -21,7 +21,13 @@ const ROUTES: Routes = [
       {
         path: 'user-account',
         canActivate: [AuthGuard],
-        component: fromContainers.UserProfileComponent
+        children: [
+          { path: '', redirectTo: 'orders-history' },
+          { path: 'orders-history', component: fromContainers.UserOrdersHistoryComponent },
+          { path: 'change-password', component: fromContainers.ChangePasswordComponent },
+          { path: 'edit-personal-data', component: fromContainers.EditPersonalDataComponent },
+          { path: 'delete-account', component: fromContainers.UserProfileComponent },
+        ]
       }
     ]
   }

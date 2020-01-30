@@ -1,0 +1,23 @@
+@import '../../../../partial';
+
+:host {
+  display: flex;
+}
+
+.container {
+  @include container;
+  .text {
+    @include text;
+  }
+  form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 380px;
+    box-shadow: $box-shadow;
+    margin: auto;
+    mat-form-field {
+      margin: 0px 0 25px 0;
+    }
+  }
+}

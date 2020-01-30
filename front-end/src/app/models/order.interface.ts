@@ -1,4 +1,3 @@
-import { User } from './user.interface';
 import { Product } from './product.interface';
 
 export interface OrderRequest {
@@ -19,14 +18,26 @@ export interface ProductFromOrder {
   quantity: number;
 }
 
-export interface Order {
-  _id: string;
-  orderBy: User;
-  orderContent: ProductFromOrder[];
-  date: number;
-  total: number;
-}
-
 export interface OrderResponse {
   message: string;
+}
+
+
+export interface OrderContent {
+  _id: string;
+  product: {
+    _id: string;
+    name: string;
+    image: string;
+  },
+  size: string;
+  quantity: number;
+}
+
+export interface Order {
+  _id: string;
+  orderBy: string;
+  orderContent: OrderContent[],
+  date: number;
+  total: number;
 }

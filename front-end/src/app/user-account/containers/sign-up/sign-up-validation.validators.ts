@@ -1,4 +1,5 @@
 import { AbstractControl, FormControl } from '@angular/forms';
+import { User } from 'src/app/models/user.interface';
 
 export class SignUpValidation {
   static emailValidation(control: AbstractControl) {
@@ -16,4 +17,31 @@ export class SignUpValidation {
       : { checkPassword: true };
   }
 
+  static userPersonalData(user: User) {
+    const { firstName, lastName, address } = user;
+    return (control: AbstractControl) => {
+      const firstNameControl = control.get('firstName') as FormControl;
+      const lastNameControl = control.get('lastName') as FormControl;
+      const addressControl = control.get('address') as FormControl;
+
+      return firstNameControl.value !== firstName ||
+        lastNameControl.value !== lastName ||
+        addressControl.value !== address
+        ? null
+        : { invalid: true };
+    };
+  }
+
+  static newPasswordCheck(control: AbstractControl) {
+    const currentPassword = control.get('currentPassword') as FormControl;
+    const password = control.get('password') as FormControl;
+    return currentPassword.value !== password.value
+      ? null
+      : { invalidNewPassword: true };
+  }
+
+  static deleteAccount(control: AbstractControl) {
+    const deleteControl = control.get('delete') as FormControl;
+    return deleteControl.value === 'delete' ? null : { invalid: true };
+  }
 }

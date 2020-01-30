@@ -17,6 +17,7 @@ export class InputFieldComponent {
       case 'email': {
         return 'email';
       }
+      case 'current Password':
       case 'repeat Password':
       case 'password': {
         return 'password';

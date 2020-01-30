@@ -1,0 +1,25 @@
+li {
+  display: flex;
+  margin: 14px 0;
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+    img {
+      width: 45px;
+      height: auto;
+    }
+  }
+  .product {
+    padding-left: 10px;
+    h4 {
+      font-weight: 500;
+    }
+    h4,
+    p {
+      margin: 0;
+      padding: 2px 0;
+    }
+  }
+}

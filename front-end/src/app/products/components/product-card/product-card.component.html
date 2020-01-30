@@ -2,6 +2,7 @@
   [@cardScale]="scaleCardAnimation ? 'final' : 'initial'"
   (mouseenter)="onMouseEnter()"
   (mouseleave)="onMouseLeave()"
+  (click)="viewProductDetails()"
   class="product-card"
 >
   <img mat-card-image [src]="product.image" alt="item" />
@@ -13,11 +14,6 @@
       <span class="prize-part-one">&euro; {{ integerPrice }},</span>
       <span class="prize-part-two">{{ decimalPrice }}</span>
     </div>
-    <button 
-      mat-button
-      (click)="viewProductDetails()">
-      Details
-    </button>
   </mat-card-actions>
 </mat-card>
 

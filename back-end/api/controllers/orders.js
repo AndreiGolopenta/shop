@@ -17,15 +17,11 @@ exports.create_order = async (req, res, next) => {
 
 exports.get_orders_for_user = async (req, res, next) => {
   try {
-    const orderBy = req.params.userId;
+    const orderBy = req.userData.userId;
     const response = await Order.find({ orderBy })
-      .populate('orderBy', 'email')
-      .populate('orderContent.product', 'name')
+      .populate('orderContent.product', 'name image')
       .exec();
-    res.status(200).json({
-      count: response.length,
-      orders: response
-    });
+    res.status(200).json(response);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
