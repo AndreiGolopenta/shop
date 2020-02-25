@@ -1,42 +1,177 @@
-table {
-  width: 100%;
-  th,
-  td {
-    color: #545e6f;
-  }
-  .products-tab-header {
-    span {
-      margin-left: 30px;
-    }
-  }
-  .products-tab {
-    width: 400px;
-    padding: 15px 25px 15px 10px;
-  }
-  .quantity-tab {
-    width: 150px;
-  }
-  .unit-price {
-    width: 250px;
-    font-weight: 500;
-  }
-  .total {
-    font-weight: 500;
-    width: 80px;
-    &-value {
-      font-size: 16px;
-      font-weight: 600;
-    }
-  }
-}
+@import '../../../../assets/SCSS/mixins';
+@import '../../../../assets/SCSS/variables';
 
-.text {
-  font-size: 15px;
-  font-weight: 400;
-  color: #545e6f;
-  padding-right: 25px;
-}
+.container {
+   display: flex;
+   flex-wrap: wrap;
+   margin: 2rem 4rem;
 
-.user {
-  margin-top: 20px;
+   @include respond(breakpoint-7) {
+      margin: 2rem;
+   }
+
+   &__list {
+      flex: 0 1 100%;
+      box-shadow: $box-shadow-2;
+      list-style: none;
+      border-radius: 4px;
+      font-size: 1.5rem;
+
+      @include respond(breakpoint-2) {
+         font-size: 80%;
+      }
+
+      & > :not(:first-child) {
+         border-top: 1px solid $color-grey-light-4;
+      }
+
+      & > :first-child {
+         font-weight: 500;
+         margin: 0.5rem 0;
+
+         @include respond(breakpoint-4) {
+            display: none;
+         }
+      }
+
+      &__product {
+         display: flex;
+         position: relative;
+
+         @include respond(breakpoint-4) {
+            flex-direction: column;
+            padding: 1rem 0;
+         }
+
+         & > * {
+            display: flex;
+
+            @include respond(breakpoint-4) {
+               &:not(:first-child) {
+                  margin-left: 16rem;
+                  margin-right: 1rem;
+               }
+            }
+         }
+
+         & > :not(:first-child) {
+            padding: 1rem;
+
+            @include respond(breakpoint-4) {
+               padding: 0.6rem;
+            }
+         }
+
+         &__image {
+            flex: 0 1 7rem;
+            margin-right: 0.2rem;
+            align-items: center;
+            margin-left: 2.5rem;
+            padding: 1rem 0 1rem 1rem;
+
+            @include respond(breakpoint-4) {
+               position: absolute;
+               top: 50%;
+               transform: translateY(-50%);
+               width: 12rem;
+            }
+
+            img {
+               width: 100%;
+            }
+         }
+
+         &__name {
+            flex: 1 1;
+            flex-direction: column;
+            justify-content: flex-start;
+            margin: auto;
+
+            &--header {
+               margin-left: 2.5rem;
+               justify-content: center;
+               font-size: 1.6rem;
+            }
+
+            & > :first-child {
+               @include respond(breakpoint-4) {
+                  padding-bottom: 0.6rem;
+               }
+            }
+         }
+
+         &__quantity {
+            flex: 0 1 20%;
+            align-items: center;
+         }
+
+         &__unit-price {
+            flex: 0 1 15%;
+            align-items: center;
+
+            @include respond(breakpoint-4) {
+               &::before {
+                  content: 'Unit price:';
+                  display: block;
+                  font-weight: 600;
+                  margin-right: 0.5rem;
+               }
+            }
+         }
+
+         &__item-total {
+            flex: 0 1 15%;
+            align-items: center;
+
+            @include respond(breakpoint-4) {
+               &::before {
+                  content: 'Item total:';
+                  display: block;
+                  font-weight: 600;
+                  margin-right: 0.5rem;
+               }
+            }
+         }
+      }
+
+      &__total-price {
+         display: flex;
+         justify-content: center;
+
+         &__text {
+            flex: 1;
+            padding: 1.5rem;
+            text-align: end;
+         }
+
+         &__value {
+            flex: 0 1 15%;
+            font-weight: 600;
+            padding: 1.5rem 1rem;
+
+            @include respond(breakpoint-4) {
+               flex: 0 1 30%;
+            }
+         }
+      }
+   }
+
+   &__user {
+      margin-top: 2rem;
+      flex: 0 1 100%;
+      box-shadow: $box-shadow-2;
+      border-radius: 4px;
+   }
+
+   &__error {
+      flex: 0 1 80%;
+      margin: 6rem auto;
+
+      &__text {
+         @include respond(breakpoint-6) {
+            padding-top: 0.2rem;
+            margin-left: 0.5rem;
+         }
+      }
+   }
 }

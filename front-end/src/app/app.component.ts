@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Nav } from './models/nav.interface';
+import { Component, OnInit, HostListener } from '@angular/core';
 import * as fromStore from './store';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
@@ -22,15 +21,8 @@ import { Product } from './models/product.interface';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  nav: Nav[] = [
-    { name: 'Home', route: '/products', exact: true },
-    { name: 'Shirts & Tops', route: '/products/shirts&tops', exact: false },
-    { name: 'Shorts & Pants', route: '/products/shorts&pants', exact: false },
-    { name: 'Jackets & Vests', route: '/products/jackets&vests', exact: false },
-    { name: 'Shoes', route: '/products/shoes', exact: false },
-    { name: 'Gloves', route: '/products/gloves', exact: false }
-  ];
 
+  menu: boolean = false;
   cartQuantity$: Observable<number>;
   cartTotal$: Observable<number>;
   userToken$: Observable<string>;
@@ -41,6 +33,11 @@ export class AppComponent implements OnInit {
     private router: Router,
     private searchProductsService: SearchProductsService
   ) {}
+
+  @HostListener('window:resize', ['$event'])
+  handleResize(event) {
+    event.target.innerWidth ? this.menu = false : null;
+  }
 
   ngOnInit() {
     this.cartQuantity$ = this.store.select(fromStore.getCart).pipe(
@@ -92,6 +89,14 @@ export class AppComponent implements OnInit {
       .join('')
       .toLowerCase();
     this.router.navigate([`/products/${category}`, product._id]);
+  }
+
+  toggleMenu() {
+    this.menu = !this.menu;
+  }
+
+  closeResponsiveNav() {
+    this.menu = false;
   }
 
 }

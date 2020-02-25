@@ -19,8 +19,8 @@ export class SignInComponent implements OnInit {
   color: string = '#B00020';
   required: boolean = false;
   data: InputForm[] = [
-    { name: 'email', icon: 'email' },
-    { name: 'password', icon: 'lock' }
+    { name: 'email', icon: 'email', id: 'emailSignIn' },
+    { name: 'password', icon: 'lock', id: 'passwordSignIn' }
   ];
 
   constructor(

@@ -1,23 +1,58 @@
-@import '../../../../partial';
-
-:host {
-  display: flex;
-}
+@import '../../../../assets/SCSS/mixins';
+@import '../../../../assets/SCSS/variables';
 
 .container {
-  @include container;
-  .text {
-    @include text;
-  }
-  form {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    width: 380px;
-    box-shadow: $box-shadow;
-    margin: auto;
-    mat-form-field {
-      margin: 0px 0 25px 0;
-    }
-  }
+   display: flex;
+   height: 100%;
+
+   &__actions {
+      flex: 0 1 20rem;
+      box-shadow: $box-shadow-2;
+
+      @include respond(breakpoint-3) {
+         display: none;
+      }
+   }
+
+   &__content {
+      flex: 1 1;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      &__error {
+         margin: 3rem 2rem 0;
+      }
+
+      &__form {
+         width: 40rem;
+         margin: 5rem 2rem;
+         display: flex;
+         flex-direction: column;
+
+         @include respond(breakpoint-7) {
+            width: 36rem;
+         }
+
+         &__title {
+            margin-bottom: 2.5rem;
+         }
+
+         &__button {
+            margin-top: 2rem;
+            @include button;
+            background: rgba($color-error, 0.9);
+            font-weight: 600;
+
+            &:disabled {
+               color: $color-text;
+               background-image: linear-gradient(
+                  to right,
+                  rgba($color-grey-light-1, 1),
+                  rgba($color-grey-light-3, 1)
+               );
+            }
+         }
+      }
+   }
 }

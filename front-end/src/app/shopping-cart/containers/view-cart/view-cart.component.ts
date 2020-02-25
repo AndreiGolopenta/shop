@@ -22,7 +22,6 @@ import { Router } from '@angular/router';
 export class ViewCartComponent implements OnInit, OnDestroy {
   colorForTable: string = '#3949ab';
   colorForRegistrationError: string = '#B00020';
-  displayedColumns: string[] = ['name', 'order', 'price', 'itemTotal'];
   cart$: Observable<TableData[]>;
   total$: Observable<number>;
   userName$: Observable<string>;

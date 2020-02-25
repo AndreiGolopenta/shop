@@ -1,19 +1,84 @@
-.banner {
-  margin: -20px -35px 20px -35px;
-  position: relative;
-  img {
-    width: 100%;
-    height: auto;
-  }
-  h1 {
-    position: absolute;
-    top: 30%;
-    left: 5%;
-    color: #fff;
-    font-size: 2.3vw;
-    text-shadow: -2px 0px 7px #545e6f;
-    span {
-      margin-left: 5vw;
-    }
-  }
+@import '../../../../assets/SCSS/variables';
+@import '../../../../assets/SCSS/mixins';
+
+.container {
+   display: flex;
+   flex-direction: column;
+
+   &__background {
+      display: flex;
+      margin-bottom: 5rem;
+
+      @include respond(breakpoint-4) {
+         margin-bottom: 2.5rem;
+      }
+
+      &__image {
+         width: 100%;
+         height: auto;
+         margin-right: -85%;
+      }
+
+      &__header {
+         flex: 0;
+         align-self: center;
+         text-transform: uppercase;
+         font-size: 3rem;
+         font-weight: 300;
+         letter-spacing: 0.2rem;
+         color: $color-white;
+         text-align: left;
+         width: 30%;
+
+         @include respond(breakpoint-1) {
+            font-size: 2.5rem;
+         }
+
+         @include respond(breakpoint-2) {
+            font-size: 2rem;
+         }
+
+         @include respond(breakpoint-3) {
+            font-size: 1.5rem;
+         }
+
+         @include respond(breakpoint-4) {
+            font-size: 1rem;
+         }
+
+
+         &__span {
+            border-radius: 4px;
+            padding: 1rem 1.5rem;
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+            line-height: 4rem;
+            background-image: linear-gradient(
+               to right bottom,
+               rgba($color-blue-secondary, 0.85),
+               rgba($color-blue-primary, 0.85)
+            );
+
+            @include respond(breakpoint-1) {
+               line-height: 3.5rem;
+            }
+
+            @include respond(breakpoint-2) {
+               line-height: 3rem;
+            }
+
+            @include respond(breakpoint-3) {
+               line-height: 2.5rem;
+            }
+
+            @include respond(breakpoint-4) {
+               line-height: 2rem;
+            }
+         }
+      }
+   }
+
+   &__category {
+      flex: 0 1 100%;
+   }
 }

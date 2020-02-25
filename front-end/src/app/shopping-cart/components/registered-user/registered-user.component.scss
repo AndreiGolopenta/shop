@@ -1,12 +1,14 @@
 .container {
-  color: #545e6f;
-  padding-left: 63%;
-  p {
-    position: relative;
-    top: -10px;
-    font-size: 15px;
-  }
-  button {
-    margin-bottom: 20px;
-  }
+   display: flex;
+   flex-direction: column;
+   align-content: flex-start;
+   margin-left: auto;
+
+   & > :not(:last-child) {
+      margin-bottom: 0.5rem;
+   }
+
+   &__place-order {
+      margin-top: 1.5rem;
+   }
 }

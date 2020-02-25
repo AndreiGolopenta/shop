@@ -1,0 +1,117 @@
+@import '../../../../assets/SCSS/variables';
+@import '../../../../assets/SCSS/mixins';
+
+@mixin link($value) {
+   display: inline-block;
+   padding: $value;
+   text-decoration: none;
+   text-transform: uppercase;
+   color: $color-white;
+   font-weight: 500;
+   transform: scale(1);
+   transition: all 0.2s ease-in-out;
+}
+
+@mixin before($left) {
+   content: '';
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   left: $left;
+   display: inline-block;
+   height: 2rem;
+   width: 1.8rem;
+   clip-path: polygon(10% 0, 70% 52%, 10% 100%, 0% 100%, 29% 52%, 0 0);
+   background: $color-white;
+}
+.nav {
+   margin-left: 4.8rem;
+   list-style: none;
+   display: flex;
+
+   @include respond(breakpoint-3) {
+      flex-direction: column;
+      margin: 1.5rem 6rem;
+
+      &__item:not(:last-child) {
+         border-bottom: 1px solid $color-white;
+      }
+   }
+
+   &__item {
+      &__link:link,
+      &__link:visited {
+         @include link(1.2rem);
+
+         @include respond(breakpoint-3) {
+            padding-left: 3.5rem;
+         }
+      }
+
+      &__link:active {
+         transform: scale(0.8);
+      }
+
+      &--active {
+         border-bottom: 2px solid $color-blue-secondary;
+
+         @include respond(breakpoint-3) {
+            position: relative;
+            border-bottom: 2px transparent;
+
+            &::before {
+               @include before(1rem);
+            }
+         }
+      }
+
+      &__account {
+         padding: 0.8rem 1.2rem;
+         text-decoration: none;
+         text-transform: uppercase;
+         color: $color-white;
+         font-weight: 500;
+         transform: scale(1);
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+
+         @include respond(breakpoint-3) {
+            padding-left: 3.5rem;
+         }
+      }
+
+      .account-nav {
+         list-style: none;
+         color: $color-white;
+         position: relative;
+         left: 6rem;
+         opacity: 0;
+         transition: opacity 0.1s ease-in-out;
+
+         &--expand {
+            opacity: 1;
+         }
+
+         &__item {
+
+            &--active {
+               position: relative;
+
+               &::before {
+                  @include before(-1.5rem);
+               }
+            }
+
+            &__link:link,
+            &__link:visited {
+               @include link(0.6rem);
+            }
+
+            &__link:active {
+               transform: scale(0.8);
+            }
+         }
+      }
+   }
+}

@@ -1,21 +1,25 @@
-<div>
-  <mat-tab-group>
-    <mat-tab label="Description">
-      <p>{{ product.description }}</p>
-    </mat-tab>
-    <mat-tab label="Fact Sheet">
-      <mat-list dense>
-        <mat-list-item
-          *ngFor="let el of productList; index as i"
-          [ngSwitch]="el"
-        >
-          <strong *ngSwitchCase="'name'"> Product Name: </strong>
-          <strong *ngSwitchCase="'for'"> For women/men/unisex: </strong>
-          <strong *ngSwitchDefault> {{ el | titlecase }}: </strong>
-          <span>{{ product[el] }}</span>
-          <mat-divider *ngIf="i !== divider"></mat-divider>
-        </mat-list-item>
-      </mat-list>
-    </mat-tab>
-  </mat-tab-group>
-</div>
+<mat-tab-group>
+   <mat-tab label="Description">
+      <p class="description">{{ product.description }}</p>
+   </mat-tab>
+   <mat-tab label="Fact Sheet">
+      <ul class="fact-sheet">
+         <li
+            class="fact-sheet__entry"
+            *ngFor="let el of productList"
+            [ngSwitch]="el"
+         >
+            <strong *ngSwitchCase="'name'" class="fact-sheet__entry__fact-name">
+               Product Name:
+            </strong>
+            <strong *ngSwitchCase="'for'" class="fact-sheet__entry__fact-name">
+               For women/men/unisex:
+            </strong>
+            <strong *ngSwitchDefault class="fact-sheet__entry__fact-name">
+               {{ el | titlecase }}:
+            </strong>
+            <span class="fact-sheet__entry__fact">{{ product[el] }}</span>
+         </li>
+      </ul>
+   </mat-tab>
+</mat-tab-group>

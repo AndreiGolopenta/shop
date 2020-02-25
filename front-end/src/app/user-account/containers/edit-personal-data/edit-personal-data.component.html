@@ -1,33 +1,42 @@
-<div class="actions">
-  <app-user-actions> </app-user-actions>
-</div>
 <div class="container">
-  <div class="message" *ngIf="responseMessage">
-    <app-error-message [color]="color">
-      <p class="text">
-        {{ responseMessage }}
-      </p>
-    </app-error-message>
-  </div>
-  <mat-card class="edit-personal-data" *ngIf="user">
-    <form [formGroup]="form" novalidate (ngSubmit)="handleSubmit()">
-      <h3>Edit Personal Data</h3>
-      <app-input-field
-        class="input-component"
-        *ngFor="let element of data"
-        [parent]="form"
-        [element]="element"
-        [required]="required"
+   <div class="container__actions">
+      <app-user-actions> </app-user-actions>
+   </div>
+   <div class="container__content">
+      <app-error-message
+         class="container__content__error"
+         [color]="color"
+         *ngIf="responseMessage"
       >
-      </app-input-field>
-      <button
-        type="submit"
-        [disabled]="form.invalid"
-        color="primary"
-        mat-stroked-button
+         <p class="container__error__text">
+            {{ responseMessage }}
+         </p>
+      </app-error-message>
+      <form
+         *ngIf="user"
+         class="container__content__form"
+         [formGroup]="form"
+         novalidate
+         (ngSubmit)="handleSubmit()"
       >
-        Send Request
-      </button>
-    </form>
-  </mat-card>
+         <h3 class="container__content__form__title">
+            Change password
+         </h3>
+         <app-input-field
+            class="container__content__form__input"
+            *ngFor="let element of data"
+            [parent]="form"
+            [element]="element"
+            [required]="required"
+         >
+         </app-input-field>
+         <button
+            type="submit"
+            [disabled]="form.invalid"
+            class="container__content__form__button"
+         >
+            Send Request
+         </button>
+      </form>
+   </div>
 </div>

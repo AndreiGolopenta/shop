@@ -1,9 +1,27 @@
-<div class="container">
-  <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
-    <input type="number" min="1" formControlName="quantity">
-    <button type="submit" [disabled]="form.invalid">
-      <mat-icon>refresh</mat-icon>
-    </button>
-  </form>
-  <mat-icon (click)="deleteFromCart()">delete</mat-icon>
-</div>
+<form class="container" [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
+   <input
+      class="container__input"
+      type="number"
+      min="1"
+      formControlName="quantity"
+      [id]="id"
+      placeholder="Quantity"
+   />
+   <label class="container__label" [for]="id">Quantity:</label>
+   <div class="container__actions">
+      <button
+         class="container__actions__button"
+         type="submit"
+         [disabled]="form.invalid"
+      >
+         <mat-icon class="container__actions__button__icon">refresh</mat-icon>
+      </button>
+      <button
+         class="container__actions__button"
+         type="button"
+         (click)="deleteFromCart()"
+      >
+         <mat-icon class="container__actions__button__icon">delete</mat-icon>
+      </button>
+   </div>
+</form>

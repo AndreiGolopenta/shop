@@ -1,38 +1,35 @@
-<mat-card *ngIf="product$ | async as product; else loading">
-  <mat-grid-list cols="5" rowHeight="30px">
-    <mat-grid-tile [rowspan]="2" [colspan]="5">
-      <h3 class="product-name">{{ product.name }}</h3>
-    </mat-grid-tile>
-    <mat-grid-tile [rowspan]="10" [colspan]="2">
-      <img [src]="product.image" alt="product" />
-    </mat-grid-tile>
-    <mat-grid-tile [rowspan]="10" [colspan]="3">
-      <app-product-detail-price
-        [product]="product">
+<div class="product" *ngIf="product$ | async as product; else loading">
+   <h3 class="product__name">{{ product.name }}</h3>
+   <div class="product__image">
+      <img [src]="product.image" alt="product-image" />
+   </div>
+   <div class="product__order">
+      <app-product-detail-price 
+         class="product__order__price"
+         [product]="product">
       </app-product-detail-price>
       <app-product-detail-order
-        [product]="product"
-        (orderProduct)="handleOrder($event)"
+         class="product__order__order-form"
+         [product]="product"
+         (orderProduct)="handleOrder($event)"
       >
       </app-product-detail-order>
-    </mat-grid-tile>
-    <mat-grid-tile [rowspan]="9" [colspan]="5">
-      <app-product-detail-description 
-        [product]="product"
-        [productList]="productList$ | async">
+   </div>
+   <div class="product__description">
+      <app-product-detail-description
+         [product]="product"
+         [productList]="productList$ | async"
+      >
       </app-product-detail-description>
-    </mat-grid-tile>
-  </mat-grid-list>
-  <div class="actions">
-    <button 
-      routerLink="../"
-      mat-stroked-button>
-      Go Back
-    </button>
-  </div>
-</mat-card>
+   </div>
+   <div class="product__action">
+      <button routerLink="../" mat-stroked-button>
+         Go Back
+      </button>
+   </div>
+</div>
 <ng-template #loading>
-  <mat-card class="spinner">
-    <mat-spinner></mat-spinner>
-  </mat-card>
+   <div class="spinner">
+      <mat-spinner></mat-spinner>
+   </div>
 </ng-template>

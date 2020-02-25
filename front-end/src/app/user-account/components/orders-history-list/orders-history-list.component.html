@@ -1,0 +1,15 @@
+<ul class="history">
+   <li class="history__item">
+      <div class="history__item__date">Date</div>
+      <div class="history__item__products">Products</div>
+      <div class="history__item__amount">Amount</div>
+   </li>
+   <li class="history__item" *ngFor="let order of orders">
+      <div class="history__item__date">{{ order.date | date: 'short' }}</div>
+      <div class="history__item__products">
+         <app-orders-history-list-products [products]="order.orderContent">
+         </app-orders-history-list-products>
+      </div>
+      <div class="history__item__amount">{{ order.total }} &euro;</div>
+   </li>
+</ul>

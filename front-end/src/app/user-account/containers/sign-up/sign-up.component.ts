@@ -25,12 +25,12 @@ export class SignUpComponent implements OnInit, OnDestroy {
   color: string = '#B00020';
   required: boolean = true;
   data: InputForm[] = [
-    { name: 'first Name', icon: 'account_circle' },
-    { name: 'last Name', icon: 'account_circle' },
-    { name: 'address', icon: 'location_city' },
-    { name: 'email', icon: 'email' },
-    { name: 'password', icon: 'lock' },
-    { name: 'repeat Password', icon: 'lock' }
+    { name: 'first Name', icon: 'account_circle', id: 'firstNameSignUp' },
+    { name: 'last Name', icon: 'account_circle', id: 'lastNameSignUp' },
+    { name: 'address', icon: 'location_city', id: 'addressSignUp' },
+    { name: 'email', icon: 'email', id: 'emailSignUp' },
+    { name: 'password', icon: 'lock', id: 'passwordSignUp' },
+    { name: 'repeat Password', icon: 'lock', id: 'repeatPasswordSignUp' }
   ];
 
   cartValueSubscription: Subscription;

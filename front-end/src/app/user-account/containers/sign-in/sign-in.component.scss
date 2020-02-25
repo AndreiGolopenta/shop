@@ -1,42 +1,70 @@
-@import '../../../../partial';
+@import '../../../../assets/SCSS/variables';
+@import '../../../../assets/SCSS/mixins';
 
 :host {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 450px;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+   background-image: linear-gradient(
+         -90deg,
+         rgba($color-white, 0.7) 0%,
+         rgba($color-white, 0.7) 50rem,
+         transparent 50rem
+      ),
+      url(../../../../assets/banner/freeride_lofoten.jpg);
+   background-position: bottom;
+   background-size: cover;
+
+   @include respond(breakpoint-1) {
+      background-image: linear-gradient(-90deg, rgba($color-white, 0.7)),
+         url(../../../../assets/banner/freeride_lofoten.jpg);
+      justify-content: center;
+   }
 }
 
-.error {
-  position: relative;
-  top: -10px;
-  .text {
-    font-size: 15px;
-    font-weight: 400;
-    color: #545e6f;
-    padding-right: 25px;
-  }
-}
+.container {
+   position: relative;
+   flex: 0 1 38rem;
+   margin-right: 6rem;
+   display: flex;
+   flex-direction: column;
 
-.log-in {
-  width: 400px;
-  color: #545e6f;
-  padding: 20px 30px;
-  box-shadow: $box-shadow;
-  margin: auto;
-  form {
-    display: flex;
-    flex-direction: column;
-    .input-component {
+   @include respond(breakpoint-1) {
+      margin: 0 1rem;
+   }
+
+   @include respond(breakpoint-4) {
+      font-size: 125%;
+   }
+
+   &__error {
       width: 100%;
-    }
-    button {
-      margin-top: 20px;
-    }
-  }
-  div {
-    padding: 20px 10px 10px 10px;
-    text-align: center;
-    font-size: 13px;
-  }
+      margin: 2rem 0;
+
+      &__text {
+         @include respond(breakpoint-6) {
+            padding-top: 0.2rem;
+            margin-left: 0.5rem;
+         }
+      }
+   }
+
+   &__sign-in {
+      margin-top: 5rem;
+
+      &__header {
+         margin-bottom: 2.5rem;
+      }
+
+      &__button {
+         @include button;
+      }
+   }
+
+   &__sign-up {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      text-align: center;
+   }
 }

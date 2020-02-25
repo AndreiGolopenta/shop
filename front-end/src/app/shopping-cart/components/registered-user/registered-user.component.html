@@ -1,10 +1,12 @@
 <div class="container">
-  <h4>Checkout as Existing Customer</h4>
-  <p>You are signed in as: {{ userName }}</p>
-  <button 
-    (click)="order()"
-    color="primary"
-    mat-stroked-button>
-    Place Your Order
-  </button>
+   <h4 class="container__title">Checkout as Existing Customer</h4>
+   <p class="container__user-name">You are signed in as: {{ userName }}</p>
+   <button
+      class="container__place-order"
+      (click)="order()"
+      color="primary"
+      mat-stroked-button
+   >
+      Place Your Order
+   </button>
 </div>

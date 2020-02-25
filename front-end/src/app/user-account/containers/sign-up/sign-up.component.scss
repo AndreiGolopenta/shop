@@ -1,52 +1,89 @@
-@import '../../../../partial';
+@import '../../../../assets/SCSS/variables';
+@import '../../../../assets/SCSS/mixins';
 
 :host {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+   background-image: linear-gradient(
+         -90deg,
+         rgba($color-white, 0.7) 0%,
+         rgba($color-white, 0.7) 50rem,
+         transparent 50rem
+      ),
+      url(../../../../assets/banner/freeride_lofoten.jpg);
+   background-position: bottom;
+   background-size: cover;
+
+   @include respond(breakpoint-1) {
+      background-image: linear-gradient(-90deg, rgba($color-white, 0.7)),
+         url(../../../../assets/banner/freeride_lofoten.jpg);
+      justify-content: center;
+   }
 }
 
 .container {
-  padding: 15px 0;
-  .error {
-    position: relative;
-    top: -10px;
-    .text {
-      font-size: 15px;
-      font-weight: 400;
-      color: #545e6f;
-      padding-right: 25px;
-    }
-  }
-  
-  .sign-up {
-    position: relative;
-    width: 400px;
-    color: #545e6f;
-    padding: 20px 30px;
-    margin: auto;
-    box-shadow: $box-shadow;
-    form {
-      display: flex;
-      flex-direction: column;
-      .input-component {
-        width: 100%;
+   position: relative;
+   flex: 0 1 38rem;
+   margin-right: 6rem;
+   display: flex;
+   flex-direction: column;
+
+   @include respond(breakpoint-1) {
+      margin: 0 1rem;
+   }
+
+   @include respond(breakpoint-4) {
+      font-size: 125%;
+   }
+
+   &__error {
+      width: 100%;
+      padding: 2rem 0;
+
+      &__text {
+         @include respond(breakpoint-6) {
+            padding-top: 0.2rem;
+            margin-left: 0.5rem;
+         }
       }
-      mat-error {
-        font-size: 75%;
-        position: absolute;
-        top: 456px;
+   }
+
+   &__sign-up {
+      margin-top: 5rem;
+
+      &__header {
+         margin-bottom: 2.5rem;
       }
-      button {
-        margin-top: 20px;
+
+      &__error {
+         display: inline-block;
+         position: relative;
+         top: -2.5rem;
+         left: 4rem;
+         opacity: 0;
+         font-size: 1.1rem;
+         color: $color-error;
+
+         @include respond(breakpoint-4) {
+            top: -3rem;
+         }
+
+         &--active {
+            opacity: 1;
+         }
       }
-    }
-    div {
-      padding: 20px 10px 10px 10px;
+
+      &__button {
+         @include button;
+      }
+   }
+
+   &__sign-in {
+      margin-top: 2rem;
+      margin-bottom: 5rem;
+      font-size: 1.2rem;
       text-align: center;
-      font-size: 13px;
-    }
-  }
-
+   }
 }
-

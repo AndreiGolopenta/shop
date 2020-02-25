@@ -1,0 +1,29 @@
+<ul class="container" *ngIf="!open; else list" (click)="handleViewList()">
+   <li class="container__product">
+      Click to view products
+   </li>
+</ul>
+<ng-template #list>
+   <ul class="container" (click)="handleViewList()">
+      <li class="container__product" *ngFor="let product of products">
+         <div class="container__product__image">
+            <img [src]="product.product.image" alt="product image" />
+         </div>
+         <div class="container__product__info">
+            <div class="container__product__info__name">
+               {{ product.product.name }}
+            </div>
+            <div class="container__product__info__size">
+               {{ product.size }}
+            </div>
+            <div class="container__product__info__quantity">
+               {{ product.quantity }}
+            </div>
+         </div>
+      </li>
+   </ul>
+</ng-template>
+<i class="material-icons" (click)="handleViewList()">
+   {{ open ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
+</i>
+

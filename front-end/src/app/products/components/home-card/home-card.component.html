@@ -1,10 +1,12 @@
-<mat-card
-  [routerLink]="route"
-  [@cardScale]="scaleCardAnimation ? 'final' : 'initial'"
-  (mouseenter)="onMouseEnter()"
-  (mouseleave)="onMouseLeave()"
-  class="product-card"
+<div
+   [routerLink]="route"
+   [@cardScale]="scaleCardAnimation ? 'final' : 'initial'"
+   (mouseenter)="onMouseEnter()"
+   (mouseleave)="onMouseLeave()"
+   class="product-card"
 >
-  <img [src]="product.image" alt="product" />
-  <p>{{ product.name | productName }}</p>
-</mat-card>
+   <img [src]="product.image" alt="product" class="product-card__image" />
+   <p class="product-card__name">
+      {{ product.name | productName }}
+   </p>
+</div>

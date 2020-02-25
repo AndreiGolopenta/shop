@@ -1,0 +1,132 @@
+@mixin dropdown-list {
+   width: 100%;
+   position: absolute;
+   top: 5.4rem;
+   list-style: none;
+   background-color: $color-grey-light-1;
+   border: 1px solid rgba($color-dark, 0.12);
+   box-shadow: $box-shadow-3;
+   border-radius: 0 0 4px 4px;
+   z-index: 10;
+
+   li {
+      font-size: 1.4rem;
+      padding: 0.8rem 2rem;
+      cursor: pointer;
+
+      &:hover {
+         background-color: rgba($color-grey-light-4, 0.8);
+      }
+   }
+}
+
+@mixin input-container {
+   display: flex;
+   position: relative;
+
+   &__input {
+      color: $color-text;
+      font-size: 1.4rem;
+      border-radius: 4px 4px 0 0;
+      padding: 2.4rem 1.5rem 1rem 4.5rem;
+      border: 1px solid rgba($color-dark, 0.12);
+      background-color: $color-grey-light-1;
+      display: block;
+      width: 100%;
+      transition: padding 0.2s;
+
+      &:focus {
+         outline: none;
+         box-shadow: $box-shadow-3;
+      }
+
+      &::-webkit-input-placeholder {
+         color: $color-grey-dark-3;
+      }
+
+      &:placeholder-shown {
+         padding: 1.7rem 1.5rem 1.7rem 4.5rem;
+         border-radius: 4px;
+      }
+   }
+   &__input:placeholder-shown ~ &__label {
+      transform: translate(-1rem, 2rem);
+      font-size: 1.4rem;
+      visibility: hidden;
+   }
+}
+
+@mixin input-icon {
+   position: absolute;
+   left: 1rem;
+   order: -1;
+   align-self: center;
+}
+
+@mixin input-label {
+   position: absolute;
+   transform: translate(0rem, 1rem);
+   font-size: 1.2rem;
+   margin-left: 4.5rem;
+   display: block;
+   transition: font-size 0.1s, translate 0.2s;
+   color: $color-grey-dark-3;
+}
+
+@mixin button {
+   width: 100%;
+   padding: 1.5rem 4rem;
+   border-radius: 4px;
+   border: 1px solid rgba($color-dark, 0.12);
+   background-image: linear-gradient(
+      to right,
+      rgba($color-blue-primary, 1),
+      rgba($color-blue-secondary, 0.9)
+   );
+   color: $color-white;
+   font-size: 1.6rem;
+}
+
+@mixin respond($breakpoint) {
+   @if $breakpoint == breakpoint-1 {
+      @media only screen and (max-width: 60em) {
+         @content;
+      }
+   }
+
+   @if $breakpoint == breakpoint-2 {
+      @media only screen and (max-width: 52em) {
+         @content;
+      }
+   }
+
+   @if $breakpoint == breakpoint-3 {
+      @media only screen and (max-width: 44em) {
+         @content;
+      }
+   }
+
+   @if $breakpoint == breakpoint-4 {
+      @media only screen and (max-width: 37.5em) {
+         @content;
+      }
+   }
+
+   @if $breakpoint == breakpoint-5 {
+      @media only screen and (max-width: 87.5em) {
+         @content;
+      }
+   }
+
+   @if $breakpoint == breakpoint-6 {
+      @media only screen and (max-width: 66.25em) {
+         @content;
+      }
+   }
+
+   @if $breakpoint == breakpoint-7 {
+      @media only screen and (max-width: 31.25em) {
+         @content;
+      }
+   }
+}

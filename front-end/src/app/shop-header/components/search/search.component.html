@@ -1,30 +1,42 @@
-<form [formGroup]="form" novalidate class="example-form">
-  <mat-form-field
-    [formGroup]="form"
-    novalidate
-    (ngSubmit)="onSubmit()"
-    class="example-full-width"
-  >
-    <input
-      #input
-      id="search"
-      formControlName="search"
-      matInput
-      [matAutocomplete]="auto"
-      placeholder="Enter search terms / product..."
-    />
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option
-        (click)="viewProduct(product, input)"
-        *ngFor="let product of products"
-        [value]="input.value"
+<form [formGroup]="form" novalidate class="search-form" (ngSubmit)="onSubmit()">
+   <div class="search-form__container">
+      <input
+         #input
+         type="text"
+         id="search"
+         formControlName="search"
+         class="search-form__container__input"
+         placeholder="Enter search terms / product..."
+         (input)="handleViewResults(input.value)"
+      />
+      <i class="material-icons search-form__container__icon">search</i>
+      <label for="search" class="search-form__container__label">
+         Enter search terms / product...
+      </label>
+   </div>
+   <ul
+      #list
+      class="search-form__list"
+      [class.search-form__list--active]="showList"
+   >
+      <li
+         class="search-form__list__item"
+         *ngFor="let product of products"
+         (click)="viewProduct(product, input)"
       >
-        <img class="product-image" [src]="product.image" alt="product" />
-        <span>{{ product.name }}</span>
-      </mat-option>
-      <mat-option *ngIf="noProductsMessage">
-        No items found for your selection.
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
+         <img
+            [src]="product.image"
+            alt="logo"
+            class="search-form__list__item__logo"
+         />
+         <span class="search-form__list__item__name">
+            {{ product.name }}
+         </span>
+      </li>
+      <li class="search-form__list__item" *ngIf="noProductsMessage">
+         <span class="search-form__list__item__message">
+            No items found for your selection.
+         </span>
+      </li>
+   </ul>
 </form>

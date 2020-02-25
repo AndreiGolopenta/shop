@@ -1,50 +1,55 @@
-<div class="main-container">
-  <div class="left-container">
-    <div class="sort-bar">
-      <app-sort-products-card
-        [selectionStock]="products?.data.length"
-        [stock]="products?.stock"
-        [sortedBy]="sortedBy"
-        (setSortBy)="handleSortBy($event)">
-      </app-sort-products-card
-      >
-    </div>
-    <div class="products" *ngIf="products?.data; else loading">
-      <app-product-card
-        *ngFor="
-          let el of products?.data
-            | paginate: { itemsPerPage: 9, currentPage: currentPage }
-        "
-      [product]="el"
-      (viewProduct)="handleViewProduct($event)"
-      >
-      </app-product-card>
-    </div>
-    <ng-template #loading>
-      <div class="spinner">
-        <mat-spinner></mat-spinner>
+<div class="container">
+   <div class="container__products">
+      <div class="container__products__sort-bar">
+         <app-sort-products-card
+            [selectionStock]="products?.data.length"
+            [stock]="products?.stock"
+            [sortedBy]="sortedBy"
+            (setSortBy)="handleSortBy($event)"
+         >
+         </app-sort-products-card>
       </div>
-    </ng-template>
-    <div 
-      *ngIf="products?.data.length"
-      class="pagination"
-      [class.active]="products?.data.length < 4">
-      <pagination-controls 
-      (pageChange)="currentPage = $event">
-      </pagination-controls>
-    </div>
-    <div 
-      class="error" 
-      *ngIf="products?.data.length === 0">
-      <h3>No items found for your selection.</h3>
-    </div>
-  </div>
-  <div class="right-container">
-    <app-filter-products-form 
-      [filters]=filters
-      [filterData]="filterData"
-      (applyFilters)="handleApplyFilters($event)"
-      (removeFilters)="handleRemoveFilters($event)">
-    </app-filter-products-form>
-  </div>
+      <div
+         class="container__products__cards"
+         *ngIf="products?.data; else loading"
+      >
+         <app-product-card
+            class="container__products__cards__card"
+            *ngFor="
+               let el of products?.data
+                  | paginate: { itemsPerPage: 12, currentPage: currentPage }
+            "
+            [product]="el"
+            (viewProduct)="handleViewProduct($event)"
+         >
+         </app-product-card>
+      </div>
+      <ng-template #loading>
+         <div class="container__products__spinner">
+            <mat-spinner></mat-spinner>
+         </div>
+      </ng-template>
+      <div
+         class="container__products__error"
+         *ngIf="products?.data.length === 0"
+      >
+         <h3>No items found for your selection.</h3>
+      </div>
+      <div
+         *ngIf="products?.data.length"
+         class="container__products__pagination"
+      >
+         <pagination-controls (pageChange)="currentPage = $event">
+         </pagination-controls>
+      </div>
+   </div>
+   <div class="container__filters">
+      <app-filter-products-form
+         [filters]="filters"
+         [filterData]="filterData"
+         (applyFilters)="handleApplyFilters($event)"
+         (removeFilters)="handleRemoveFilters($event)"
+      >
+      </app-filter-products-form>
+   </div>
 </div>

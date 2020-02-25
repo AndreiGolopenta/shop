@@ -1,36 +1,56 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Product } from 'src/app/models/product.interface';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+   selector: 'app-search',
+   templateUrl: './search.component.html',
+   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent {
-  @Input() products: Product[];
+   showList: boolean = false;
 
-  @Output() productDetail = new EventEmitter<Product>();
-  @Output() resetSearch = new EventEmitter();
+   @Input() products: Product[];
 
-  constructor(private fb: FormBuilder) {}
+   @Output() productDetail = new EventEmitter<Product>();
+   @Output() resetSearch = new EventEmitter();
 
-  form: FormGroup = this.fb.group({
-    search: ['']
-  });
+   @ViewChild('list', {static: false}) list: ElementRef;
 
-  get noProductsMessage(): boolean {
-    if (this.products) {
-      return this.form.get('search').value && !this.products.length
-        ? true
-        : false;
-    }
-  }
+   @HostListener('window:click', ['$event'])
+   closeList(event: MouseEvent) {
+      if (this.list.nativeElement !== event.target) {
+         this.showList = false;
+         this.form.get('search').setValue('');
+      }
+   }
 
-  viewProduct(value: Product, input: HTMLInputElement) {
-    this.form.get('search').setValue('');
-    input.blur();
-    this.productDetail.emit(value);
-  }
+   constructor(private fb: FormBuilder) {}
 
+   form: FormGroup = this.fb.group({
+      search: ['']
+   });
+
+   get noProductsMessage(): boolean {
+      if (this.products) {
+         return this.form.get('search').value && !this.products.length
+            ? true
+            : false;
+      }
+   }
+
+   viewProduct(value: Product, input: HTMLInputElement) {
+      this.form.get('search').setValue('');
+      input.blur();
+      this.productDetail.emit(value);
+   }
+
+   handleViewResults(value: string) {
+      if (value) {
+         this.showList = true;
+      } else {
+         this.showList = false;
+      }
+   }
+   
 }

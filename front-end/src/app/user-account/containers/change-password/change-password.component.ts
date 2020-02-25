@@ -22,9 +22,9 @@ export class ChangePasswordComponent implements OnInit, OnDestroy {
   color: string;
   required: boolean = true;
   data: InputForm[] = [
-    { name: 'current Password', icon: 'lock' },
-    { name: 'password', icon: 'lock' },
-    { name: 'repeat Password', icon: 'lock' }
+    { name: 'current Password', icon: 'lock', id: 'changePasswordCurrent' },
+    { name: 'password', icon: 'lock', id: 'changePasswordNew' },
+    { name: 'repeat Password', icon: 'lock', id: 'changePasswordRepeat' }
   ];
   subscription: Subscription;
   responseMessage: string;

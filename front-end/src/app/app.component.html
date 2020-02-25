@@ -1,45 +1,48 @@
-<div class="app">
-  <div class="app-header">
-    <div class="image">
-      <app-logo></app-logo>
-    </div>
-    <div class="search">
-      <app-search 
-        [products]="searchProducts$ | async"
-        (productDetail)="handleProductDetail($event)">
-      </app-search>
-    </div>
-    <div class="cart">
-     <app-cart-info 
-      [cartQuantity]="cartQuantity$ | async"
-      [cartTotal]="cartTotal$ | async"
-      [userToken]="userToken$ | async"
-      (navigateToCart)="handlleViewCart($event)"
-      (navigateToUserProfile)="handleViewUserProfile($event)"
-      (navigateToLogIn)="handleLogIn($event)"
-      (userLogout)="handleLogout($event)">
-     </app-cart-info>
-    </div>
-  </div>
-  <div class="app-content">
-    <div class="app-nav">
-      <button
-        class="nav-button" 
-        mat-button 
-        [routerLink]="category.route"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: category.exact }"
-        *ngFor="let category of nav">
-        {{ category.name }}
-      </button
-      >
-    </div>
-    <div class="app-container">
-      <router-outlet></router-outlet>
-    </div>
-    <div class="app-footer">
-      <p>&copy; My Shooping App</p>
-    </div>
-  </div>
-</div>
+<div class="app-container">
+   <header class="header">
+      <div class="header__image">
+         <app-logo></app-logo>
+      </div>
+      <div class="header__search">
+         <app-search
+            [products]="searchProducts$ | async"
+            (productDetail)="handleProductDetail($event)"
+         >
+         </app-search>
+      </div>
+      <div class="header__cart">
+         <app-cart-info
+            [cartQuantity]="cartQuantity$ | async"
+            [cartTotal]="cartTotal$ | async"
+            [userToken]="userToken$ | async"
+            (navigateToCart)="handlleViewCart($event)"
+            (navigateToUserProfile)="handleViewUserProfile($event)"
+            (navigateToLogIn)="handleLogIn($event)"
+            (userLogout)="handleLogout($event)"
+         >
+         </app-cart-info>
+      </div>
+      <div class="header__menu-btn" (click)="toggleMenu()">
+         <app-menu-btn [menu]="menu"> </app-menu-btn>
+      </div>
+   </header>
 
+   <nav class="nav__main">
+      <app-menu></app-menu>
+   </nav>
+
+   <nav class="nav__responsive" [class.nav__responsive--show-hide]="!menu">
+      <app-menu 
+         [menu]="menu"
+         (responsiveNav)="closeResponsiveNav()">
+      </app-menu>
+   </nav>
+
+   <main class="router-outlet" [class.router-outlet--hide]="menu">
+      <router-outlet></router-outlet>
+   </main>
+
+   <footer class="footer" [class.footer--hide]="menu">
+      <p class="footer__text">&copy; My Shooping App</p>
+   </footer>
+</div>

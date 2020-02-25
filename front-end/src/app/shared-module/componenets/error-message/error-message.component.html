@@ -1,13 +1,7 @@
-<div class="card">
-  <div 
-    class="container"
-    [ngStyle]="{ borderLeft: borderLeftValue }">
-    <mat-icon 
-      class="icon"
-      [ngStyle]="{ color: color }">
+<div class="card" [ngStyle]="{ borderLeft: borderLeftValue }">
+   <mat-icon class="card__icon" [ngStyle]="{ color: color }">
       info
-    </mat-icon>
-    <p class="info">{{ text }}</p>
-    <ng-content select=".text"></ng-content>
-  </div>
+   </mat-icon>
+   <p class="card__info">{{ text }}</p>
+   <ng-content select=".container__error__text"></ng-content>
 </div>

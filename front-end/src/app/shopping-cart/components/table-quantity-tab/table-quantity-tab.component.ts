@@ -3,36 +3,39 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { TableData } from 'src/app/models/productFromCart.interface';
 
 @Component({
-  selector: 'app-table-quantity-tab',
-  templateUrl: './table-quantity-tab.component.html',
-  styleUrls: ['./table-quantity-tab.component.scss']
+   selector: 'app-table-quantity-tab',
+   templateUrl: './table-quantity-tab.component.html',
+   styleUrls: ['./table-quantity-tab.component.scss']
 })
 export class TableQuantityTabComponent implements OnInit {
+   @Input() data: TableData;
 
-  @Input() data: TableData;
+   @Output() refreshOrder = new EventEmitter<TableData>();
+   @Output() deleteProductFromCart = new EventEmitter<TableData>();
 
-  @Output() refreshOrder = new EventEmitter<TableData>();
-  @Output() deleteProductFromCart = new EventEmitter<TableData>();
+   constructor(private fb: FormBuilder) {}
 
-  constructor(private fb: FormBuilder) {}
+   form: FormGroup = this.fb.group({
+      quantity: [1, Validators.min(1)]
+   });
 
-  form: FormGroup = this.fb.group({
-    quantity: [1, Validators.min(1)]
-  });
+   ngOnInit() {
+      this.form.get('quantity').setValue(this.data.quantity);
+   }
 
-  ngOnInit() {
-    this.form.get('quantity').setValue(this.data.quantity);
-  }
+   onSubmit() {
+      const updateQuantity = {
+         ...this.data,
+         ...this.form.value
+      };
+      this.refreshOrder.emit(updateQuantity);
+   }
 
-  onSubmit() {
-    const updateQuantity = {
-      ...this.data, ...this.form.value
-    }
-    this.refreshOrder.emit(updateQuantity);
-  }
+   deleteFromCart() {
+      this.deleteProductFromCart.emit(this.data);
+   }
 
-  deleteFromCart() {
-    this.deleteProductFromCart.emit(this.data);
-  }
-
+   get id() {
+      return `${this.data.product._id}${this.data.size}`;
+   }
 }

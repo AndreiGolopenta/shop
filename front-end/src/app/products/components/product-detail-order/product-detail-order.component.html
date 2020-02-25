@@ -1,38 +1,47 @@
-<form [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
-  <div>
-    <mat-form-field class="size">
-      <mat-label>Size</mat-label>
-      <mat-select formControlName="size">
-        <mat-option>--</mat-option>
-        <mat-option *ngFor="let sizeValue of product.size" [value]="sizeValue">
-          {{ sizeValue }}
-        </mat-option>
-      </mat-select>
-      <mat-error
-        *ngIf="error">
-         Size is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field class="quantity">
+<form [formGroup]="form" novalidate (ngSubmit)="onSubmit()" class="order">
+   <div class="order__size">
       <input
-        matInput
-        type="number"
-        min="1"
-        placeholder="Quantity"
-        required
-        formControlName="quantity"
+         type="text"
+         class="order__size__input"
+         formControlName="size"
+         placeholder="Size"
+         id="size"
+         readonly
+         #input
       />
-    </mat-form-field>
-    <button
+      <i class="material-icons order__size__icon" #iconOrder>arrow_drop_down</i>
+      <label for="size" class="order__size__label">Size</label>
+      <ul class="order__size__options" *ngIf="showList">
+         <li
+            *ngFor="let sizeValue of product.size"
+            (click)="selectSize(sizeValue)"
+         >
+            {{ sizeValue }}
+         </li>
+      </ul>
+      <div class="order__size__error" *ngIf="error">
+         Size is <strong>required</strong>
+      </div>
+   </div>
+   <div class="order__quantity">
+      <input
+         type="number"
+         id="quantity"
+         formControlName="quantity"
+         required
+         class="order__quantity__input"
+         id="quantity"
+         min="1"
+      />
+      <label for="quantity" class="order__quantity__label">Quantity</label>
+   </div>
+   <button
+      class="order__submit"
       type="submit"
-      color="primary"
-      mat-stroked-button
       [disabled]="form.invalid"
-    >
-      <mat-icon aria-hidden="false">shopping_cart</mat-icon>
+      matRipple
+   >
+      <i class="material-icons order__submit__icon">shopping_cart</i>
       {{ form.invalid ? 'PLEASE SELECT' : 'ADD TO CART' }}
-    </button>
-  </div>
+   </button>
 </form>

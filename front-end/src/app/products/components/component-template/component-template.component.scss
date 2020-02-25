@@ -1,43 +1,91 @@
-.main-container {
-  display: flex;
-  .left-container {
-    width: 70%;
-    box-sizing: border-box;
-    min-height: 650px;
-    .sort-bar {
-      margin-bottom: 10px;
-    }
-    .products {
+@import '../../../../assets/SCSS/mixins';
+@import '../../../../assets/SCSS/variables';
+
+.container {
+   display: flex;
+   height: 100%;
+
+   @include respond(breakpoint-6) {
+      flex-direction: column;
+   }
+
+   &__products {
+      flex: 0 1 75%;
       display: flex;
-      flex-wrap: wrap;
-    }
-    .spinner {
-      height: 400px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .pagination {
-      height: 50px;
-      display: flex;
-      justify-content: center;
-      pagination-controls {
-        position: relative;
-        left: -24px;
+      flex-direction: column;
+
+      @include respond(breakpoint-6) {
+         flex: 0 1 100%;
       }
-      &.active {
-        position: relative;
-        top: 175px;
+
+      &__sort-bar {
+         padding: 2rem 4rem 0 2rem;
+
+         @include respond(breakpoint-6) {
+            padding: 2rem 4rem 0;
+         }
       }
-    }
-    h3 {
-      height: 100px;
-      line-height: 100px;
-      text-align: center;
-    }
-  }
-  .right-container {
-    width: 30%;
-    box-sizing: border-box;
-  }
+
+      &__cards {
+         padding-right: 4rem;
+         display: flex;
+         flex-wrap: wrap;
+
+         &__card {
+            flex: 0 1 25%;
+            padding-top: 2rem;
+            padding-left: 2rem;
+
+            @include respond(breakpoint-5) {
+               flex: 0 1 33.3333%;
+            }
+
+            @include respond(breakpoint-6) {
+               padding-left: 4rem;
+            }
+
+            @include respond(breakpoint-6) {
+               flex: 0 1 50%;
+            }
+
+            @include respond(breakpoint-7) {
+               flex: 0 1 100%;
+            }
+         }
+      }
+
+      &__spinner {
+         height: 100%;
+         display: flex;
+         justify-content: center;
+
+         mat-spinner {
+            align-self: center;
+         }
+      }
+
+      &__error {
+         height: 100%;
+         display: flex;
+         justify-content: center;
+         padding-top: 4rem;
+      }
+
+      &__pagination {
+         padding: 3rem 3rem 2rem;
+         display: flex;
+         justify-content: center;
+         align-content: flex-end;
+      }
+   }
+
+   &__filters {
+      order: -1;
+      flex: 0 1 25%;
+      padding: 2rem 0rem 2rem 4rem;
+
+      @include respond(breakpoint-6) {
+         padding: 2rem 4rem 0;
+      }
+   }
 }

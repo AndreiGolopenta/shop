@@ -1,67 +1,62 @@
+@import '../../../../assets/SCSS/mixins';
+
 .container {
-  position: relative;
-  width: 80%;
-  height: 100%;
-  margin-left: 20px;
-  .user-profile {
-    position: absolute;
-    left: 63px;
-    top: -12px;
-    font-size: 14px;
-    .account {
-      cursor: not-allowed;
-      &.active {
-        cursor: pointer;
-        font-weight: 600;
-        &:hover {
-          color: #3949ab;
-        }
+   display: flex;
+   flex-direction: column;
+   margin-right: 6rem;
+   padding: 1.3rem 0;
+   align-items: flex-end;
+
+   @include respond(breakpoint-3) {
+      margin-right: 2rem;
+   }
+
+   &__user-profile {
+      display: flex;
+      font-size: 1.4rem;
+      margin-right: -0.5rem;
+
+      span {
+         margin: 0 0.5rem;
+         padding-right: 0.4rem;
       }
-    }
-    .login {
-      margin-left: 5px;
-      cursor: pointer;
-      &:hover {
-        color: #3949ab;
-        font-weight: 600;
+
+      &__account {
+         cursor: not-allowed;
+         display: flex;
+         align-items: center;
+
+         &--active {
+            font-weight: 600;
+            cursor: pointer;
+         }
       }
-    }
-    i {
-      position: relative;
-      top: 3px;
-      font-size: 15px;
-    }
-  }
-  .cart-logo {
-    position: relative;
-    top: 20px;
-    font-size: 35px;
-    cursor: pointer;
-    span {
-      left: 20px;
-    }
-  }
-  .price {
-    position: absolute;
-    display: flex;
-    flex-wrap: wrap;
-    width: 173px;
-    height: 50px;
-    top: 7px;
-    left: 46px;
-    span {
-      display: block;
-      width: 108px;
-    }
-    h2 {
-      cursor: pointer;
-      margin-left: 110px;
-      margin: 0;
-      text-align: end;
-    }
-    .price-info {
-      text-align: end;
-      width: 100%;
-    }
-  }
+
+      &__login {
+         display: flex;
+         align-items: center;
+         cursor: pointer;
+      }
+   }
+
+   &__cart {
+      display: flex;
+      align-self: stretch;
+
+      &__logo {
+         margin-right: auto;
+         margin-top: auto;
+         cursor: pointer;
+
+         .material-icons {
+            font-size: 3.5rem;
+         }
+      }
+
+      &__info {
+         display: flex;
+         flex-direction: column;
+         align-items: flex-end;
+      }
+   }
 }

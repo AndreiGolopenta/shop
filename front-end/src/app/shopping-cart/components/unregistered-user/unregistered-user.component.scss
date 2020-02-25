@@ -1,15 +1,33 @@
-:host {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-form {
-  display: flex;
-  flex-direction: column;
-  color: #545e6f;
-  width: 250px;
-  .info {
-    font-size: 13px;
-    margin-bottom: 22px;
-  }
+@import '../../../../assets/SCSS/mixins';
+@import '../../../../assets/SCSS/variables';
+
+.form {
+   margin: 3rem 0;
+   max-width: 30rem;
+
+   &__title {
+      margin-bottom: 2.5rem;
+   }
+
+   &__control-name {
+      margin-bottom: 1rem;
+      @include input-container;
+
+      &__icon {
+         @include input-icon;
+      }
+
+      &__label {
+         @include input-label;
+      }
+   }
+
+   &__button {
+      @include button;
+   }
+
+   &__register {
+      position: relative;
+      top: 0.6rem;
+   }
 }

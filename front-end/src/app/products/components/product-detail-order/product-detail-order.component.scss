@@ -1,15 +1,85 @@
-form {
-  position: relative;
-  top: 65px;
-  left: 64px;
-  width: 65%;
-  div {
-    .size {
-      width: 100%;
-    }
-    .quantity {
-      width: 24%;
-    margin-right: 13px;
-    }
-  }
+@import '../../../../assets/SCSS/variables';
+@import '../../../../assets/SCSS/mixins';
+
+@mixin input-fix {
+   &__input {
+      padding: 2.4rem 1.5rem 1rem 2rem;
+
+      &:placeholder-shown {
+         padding: 1.7rem 1.5rem 1.7rem 2rem;
+      }
+   }
+}
+
+.order {
+   display: flex;
+   flex-wrap: wrap;
+
+   &__size {
+      flex: 0 1 100%;
+      margin-bottom: 2.5rem;
+      @include input-container;
+      @include input-fix;
+      cursor: pointer;
+
+      &__icon {
+         position: absolute;
+         top: 1.5rem;
+         left: calc(100% - 4rem);
+      }
+
+      &__label {
+         @include input-label;
+         transform: translate(-2.5rem, 1rem);
+      }
+
+      &__options {
+         @include dropdown-list;
+      }
+
+      &__error {
+         position: absolute;
+         top: 5.4rem;
+         left: 2rem;
+         font-size: 1.1rem;
+         color: $color-error;
+      }
+   }
+
+   &__quantity {
+      flex: 0 1 12rem;
+      margin-right: 2.5rem;
+      @include input-container;
+      @include input-fix;
+
+      &__label {
+         @include input-label;
+         transform: translate(-2.5rem, 1rem);
+      }
+   }
+
+   &__submit {
+      flex: 1;
+      @include button;
+      padding: 1.08rem 4rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+
+      &:disabled {
+         color: $color-text;
+         background-image: linear-gradient(
+            to right,
+            rgba($color-grey-light-1, 1),
+            rgba($color-grey-light-3, 1)
+         );
+      }
+
+      &__icon {
+         margin-right: 1.5rem;
+      }
+   }
 }

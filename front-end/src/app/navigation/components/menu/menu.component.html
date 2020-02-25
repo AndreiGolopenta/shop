@@ -1,0 +1,42 @@
+<ul class="nav">
+   <li
+      class="nav__item"
+      *ngFor="let category of nav"
+      matRipple
+      routerLinkActive="nav__item--active"
+      [routerLinkActiveOptions]="{ exact: category.exact }"
+   >
+      <a
+         [routerLink]="category.route"
+         class="nav__item__link"
+         (click)="closeResponsiveNav()"
+      >
+         {{ category.name }}
+      </a>
+   </li>
+   <li class="nav__item" *ngIf="menu">
+      <div class="nav__item__account" (click)="expandMenu()">
+         <span>Account</span>
+         <i class="material-icons">
+            {{ !expand ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}
+         </i>
+      </div>
+      <ul class="account-nav" [class.account-nav--expand]="expand">
+         <li
+            class="account-nav__item"
+            *ngFor="let item of userActions"
+            routerLinkActive="account-nav__item--active"
+            routerLinkActiveOptions="{ exact: item.exact }"
+            matRipple
+         >
+            <a
+               [routerLink]="item.route"
+               (click)="closeResponsiveNav()"
+               class="account-nav__item__link"
+            >
+               {{ item.name }}
+            </a>
+         </li>
+      </ul>
+   </li>
+</ul>

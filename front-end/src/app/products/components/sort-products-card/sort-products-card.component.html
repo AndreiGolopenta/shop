@@ -1,19 +1,24 @@
-<mat-card class="container">
-  <div class="info-stock">
-    <span>Selection:</span> {{ selectionStock ? selectionStock : " - " }} of
-    {{ stock ? stock : " - " }} Item(s)
-  </div>
-  <mat-form-field [formGroup]="form">
-    <label for="select" id="select">
-      Order by
-    </label>
-    <mat-select
-      formControlName="sort" 
-      id="select"
-      (selectionChange)="onSelect()">
-      <mat-option *ngFor="let option of sortByOptions" [value]="option">
-        {{ option }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</mat-card>
+<div class="container">
+   <div class="container__info-stock">
+      <span>Selection:</span> {{ selectionStock ? selectionStock : ' - ' }} of
+      {{ stock ? stock : ' - ' }} Item(s)
+   </div>
+   <form class="container__sort" [formGroup]="form" novalidate>
+      <input
+         type="text"
+         class="container__sort__input"
+         placeholder="Order by"
+         id="sortBy"
+         formControlName="sort"
+         #sortInput
+         readonly
+      />
+      <i class="material-icons container__sort__icon" #icon>arrow_drop_down</i>
+      <label for="sortBy" class="container__sort__label">Order by</label>
+      <ul class="container__sort__options" *ngIf="showList">
+         <li *ngFor="let option of sortByOptions" (click)="select(option)">
+            {{ option }}
+         </li>
+      </ul>
+   </form>
+</div>

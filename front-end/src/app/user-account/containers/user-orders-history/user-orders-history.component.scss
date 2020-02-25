@@ -1,10 +1,20 @@
-@import '../../../../partial';
-
-:host {
-  display: flex;
-}
+@import '../../../../assets/SCSS/mixins';
+@import '../../../../assets/SCSS/variables';
 
 .container {
-  padding-left: 20px;
-  @include container;
+   display: flex;
+   height: 100%;
+
+   &__actions {
+      flex: 0 1 20rem;
+      box-shadow: $box-shadow-2;
+
+      @include respond(breakpoint-3) {
+         display: none;
+      }
+   }
+
+   &__content {
+      flex: 1 1;
+   }
 }

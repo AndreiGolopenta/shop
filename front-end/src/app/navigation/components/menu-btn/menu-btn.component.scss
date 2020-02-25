@@ -1,0 +1,38 @@
+@import '../../../../assets/SCSS/variables';
+
+.menu__toggle {
+   display: block;
+   height: 0.25rem;
+   width: 3rem;
+   background: $color-text;
+
+   &::before {
+      content: '';
+      display: block;
+      height: 0.25rem;
+      transform: translateY(-1rem) rotate(0);
+      background: $color-text;
+      transition: all 0.2s;
+   }
+
+   &::after {
+      content: '';
+      display: block;
+      height: 0.25rem;
+      transform: translateY(0.75rem) rotate(0);
+      background: $color-text;
+      transition: all 0.2s;
+   }
+
+   &--active {
+      background: transparent;
+
+      &::before {
+         transform: translateY(0.25rem) rotate(135deg);
+      }
+
+      &::after {
+         transform: translateY(0rem) rotate(-135deg);
+      }
+   }
+}

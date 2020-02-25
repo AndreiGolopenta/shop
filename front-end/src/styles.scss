@@ -4,13 +4,28 @@ $material-icons-font-path: '~material-icons/iconfont/';
 
 @import '~material-icons/iconfont/material-icons.scss';
 
+@import './assets/SCSS/mixins';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+
+  @include respond(breakpoint-4) {
+    font-size: 50%;
+ }
+}
 
 body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
-  width: 100%;
-  height: 100%;
-  color: #545e6f;
-  background: #f1f2f5;
-  margin: 0;
-  padding: 0;
 }

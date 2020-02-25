@@ -12,7 +12,7 @@ const ordersRoutes = require('./api/routes/orders');
 const searchProducts = require('./api/routes/searchProducts');
 
 mongoose.connect(
-  '',
+  'mongodb+srv://admin:admin@shopdb-qwlzb.mongodb.net/test?retryWrites=true&w=majority',
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 

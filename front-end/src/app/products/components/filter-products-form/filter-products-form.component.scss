@@ -1,21 +1,23 @@
-form {
-  width: 95%;
-  margin-left: 3%;
-  h4 {
-    color: #545e6f;
+@import '../../../../assets/SCSS/variables';
+
+.filters {
+
+  &__title {
+    color: $color-text;
   }
-  mat-radio-group,
-  section {
+
+  &__checkbox {
+    color: $color-text;
     display: flex;
     flex-direction: column;
-    color: #545e6f;
+  }
+
+  &__reset {
+    margin-top: 2rem;
+
+    button {
+      width: 100%;
+    }
   }
 }
 
-.reset-filters-btn {
-  margin-top: 13px;
-  button {
-    width: 95%;
-    margin-left: 3%;
-  }
-}

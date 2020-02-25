@@ -1,19 +1,36 @@
-<mat-card
-  [@cardScale]="scaleCardAnimation ? 'final' : 'initial'"
-  (mouseenter)="onMouseEnter()"
-  (mouseleave)="onMouseLeave()"
-  (click)="viewProductDetails()"
-  class="product-card"
+<div
+   class="card"
+   [@cardScale]="scaleCardAnimation ? 'final' : 'initial'"
+   (mouseenter)="onMouseEnter()"
+   (mouseleave)="onMouseLeave()"
+   (click)="viewProductDetails()"
 >
-  <img mat-card-image [src]="product.image" alt="item" />
-  <mat-card-content class="title">
-    <p>{{ product.name }}</p>
-  </mat-card-content>
-  <mat-card-actions class="product-detail">
-    <div class="prize">
-      <span class="prize-part-one">&euro; {{ integerPrice }},</span>
-      <span class="prize-part-two">{{ decimalPrice }}</span>
-    </div>
-  </mat-card-actions>
-</mat-card>
+   <div class="card__image">
+      <img [src]="product.image" alt="product-image" />
+   </div>
+   <div class="card__for">{{ product.for }}</div>
+   <div class="card__name">{{ product.name }}</div>
+   <div class="card__price">
+      <span class="card__price__integral">&euro; {{ integerPrice }},</span>
+      <span class="card__price__decimal">{{ decimalPrice }}</span>
+   </div>
+</div>
 
+<!-- <mat-card
+   [@cardScale]="scaleCardAnimation ? 'final' : 'initial'"
+   (mouseenter)="onMouseEnter()"
+   (mouseleave)="onMouseLeave()"
+   (click)="viewProductDetails()"
+   class="product-card"
+>
+   <img mat-card-image [src]="product.image" alt="item" />
+   <mat-card-content class="title">
+      <p>{{ product.name }}</p>
+   </mat-card-content>
+   <mat-card-actions class="product-detail">
+      <div class="prize">
+         <span class="prize-part-one">&euro; {{ integerPrice }},</span>
+         <span class="prize-part-two">{{ decimalPrice }}</span>
+      </div>
+   </mat-card-actions>
+</mat-card> -->

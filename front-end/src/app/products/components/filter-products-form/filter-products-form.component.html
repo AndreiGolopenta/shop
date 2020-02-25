@@ -1,24 +1,35 @@
-<form [formGroup]="form" novalidate (ngSubmit)="onSubmit()" *ngIf="render">
-  <mat-accordion>
-    <ng-container *ngFor="let filter of filters">
-      <app-filter-products-expansion-panel [parent]="form">
-        <h4>{{ filter | titlecase }}</h4>
-        <section class="content" [formArrayName]="filter">
-          <ng-container
-            *ngFor="let prop of filterData[filter]; index as i"
-            [formGroupName]="i"
-          >
-            <mat-checkbox color="primary" formControlName="checked">
-              {{ prop.name }}
-            </mat-checkbox>
-          </ng-container>
-        </section>
-      </app-filter-products-expansion-panel>
-    </ng-container>
-  </mat-accordion>
+<form
+   [formGroup]="form"
+   novalidate
+   (ngSubmit)="onSubmit()"
+   *ngIf="render"
+   class="filters"
+>
+   <mat-accordion>
+      <ng-container *ngFor="let filter of filters">
+         <app-filter-products-expansion-panel [parent]="form">
+            <h4 class="filters__title">{{ filter | titlecase }}</h4>
+            <section class="filters__checkbox" [formArrayName]="filter">
+               <ng-container
+                  *ngFor="let prop of filterData[filter]; index as i"
+                  [formGroupName]="i"
+               >
+                  <mat-checkbox color="primary" formControlName="checked">
+                     {{ prop.name }}
+                  </mat-checkbox>
+               </ng-container>
+            </section>
+         </app-filter-products-expansion-panel>
+      </ng-container>
+   </mat-accordion>
+   <div class="filters__reset" *ngIf="form.valid">
+      <button
+         mat-stroked-button
+         color="primary"
+         type="button"
+         (click)="handleRemoveFilters()"
+      >
+         Remove all filters
+      </button>
+   </div>
 </form>
-<div class="reset-filters-btn">
-  <button mat-stroked-button color="primary" (click)="handleRemoveFilters()">
-    Remove all filters
-  </button>
-</div>

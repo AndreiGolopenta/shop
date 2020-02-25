@@ -1,28 +1,37 @@
-<div class="actions">
-  <app-user-actions> </app-user-actions>
-</div>
 <div class="container">
-  <app-error-message [color]="color">
-    <p class="text">
-      You are logged in as <strong>{{ user$ | async }}</strong>
-    </p>
-  </app-error-message>
-  <form [formGroup]="form" novalidate (ngSubmit)="deleteAccount()">
-    <h3>Delete Account</h3>
-    <mat-form-field>
-      <input type="text" formControlName="delete" matInput />
-      <mat-hint>Type delete to confirm.</mat-hint>
-      <mat-icon matSuffix color="warn">
-        delete_forever
-      </mat-icon>
-    </mat-form-field>
-    <button
-      [disabled]="form.invalid"
-      mat-stroked-button
-      color="warn"
-      type="submit"
-    >
-      Delete Account
-    </button>
-  </form>
+   <div class="container__actions">
+      <app-user-actions> </app-user-actions>
+   </div>
+   <div class="container__content">
+      <app-error-message class="container__content__error" [color]="color">
+         <p class="container__error__text">
+            You are logged in as <strong>{{ user$ | async }}</strong>
+         </p>
+      </app-error-message>
+      <form
+         class="container__content__form"
+         [formGroup]="form"
+         novalidate
+         (ngSubmit)="deleteAccount()"
+      >
+         <h3 class="container__content__form__title">
+            Delete Account
+         </h3>
+         <app-input-field
+            class="container__content__form__input"
+            [parent]="form"
+            [element]="inputData"
+            [required]="required"
+         >
+         </app-input-field>
+         <button
+            type="submit"
+            [disabled]="form.invalid"
+            class="container__content__form__button"
+         >
+            Delete Account
+         </button>
+      </form>
+   </div>
 </div>
+

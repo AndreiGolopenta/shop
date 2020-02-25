@@ -18,9 +18,9 @@ export class EditPersonalDataComponent implements OnInit, OnDestroy {
   color: string = '#43A047';
   required: boolean = true;
   data: InputForm[] = [
-    { name: 'first Name', icon: 'account_circle' },
-    { name: 'last Name', icon: 'account_circle' },
-    { name: 'address', icon: 'location_city' }
+    { name: 'first Name', icon: 'account_circle', id: 'editDataFirstName' },
+    { name: 'last Name', icon: 'account_circle', id: 'editDataLastName' },
+    { name: 'address', icon: 'location_city', id: 'editDataAddress' }
   ];
   form: FormGroup;
   userPersonalDateSubscription: Subscription;

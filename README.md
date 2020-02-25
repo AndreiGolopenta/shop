@@ -20,6 +20,9 @@ Actions that can be made:
 * searching products (with autocomplete); 
 * view user profile (order history / change password / edit user personal data / delete account)
 
+Update:
+* Responsive design for the entire application;
+
 
 __Screenshot__
 

@@ -1,24 +1,63 @@
+@import '../../../../assets/SCSS/mixins';
+@import '../../../../assets/SCSS/variables';
+
 .container {
-  display: flex;
-  form {
-    display: flex;
-    input {
+   display: flex;
+   align-items: center;
+
+   @include respond(breakpoint-2) {
+      flex-direction: column;
+   }
+
+   @include respond(breakpoint-4) {
+      flex-direction: row;
+   }
+
+   &__input {
+      width: 5.5rem;
+      color: $color-text;
+      font-size: 1.4rem;
       border-radius: 4px;
-      border: none;
-      box-shadow: 0 0 2px #23292d;
-      width: 32px;
-      padding: 4px 10px;
-      margin-right: 10px;
-    }
-    button {
-      border: none;
-      background: none;
-      margin: 0;
-      padding: 0;
-      color: #545e6f;
-    }
-  }
-  mat-icon {
-    cursor: pointer;
-  }
+      padding: 0.6rem;
+      border: 1px solid rgba($color-dark, 0.12);
+      background-color: $color-grey-light-1;
+      display: block;
+      margin-right: 0.3rem;
+   }
+
+   &__label {
+      display: none;
+
+      @include respond(breakpoint-4) {
+         display: block;
+         margin-right: 1rem;
+         font-weight: 600;
+         order: -1;
+      }
+   }
+
+   &__actions {
+      display: flex;
+
+      @include respond(breakpoint-2) {
+         margin-top: 0.4rem;
+      }
+
+      @include respond(breakpoint-4) {
+         margin-top: 0;
+      }
+
+      &__button {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         cursor: pointer;
+         border: none;
+         background: none;
+
+         &__icon {
+            color: $color-text;
+         }
+      }
+   }
 }

@@ -1,15 +1,23 @@
-<mat-card class="container" *ngIf="userName; else register">
-  <app-registered-user 
-    [userName]="userName"
-    (placeOrder)="handlePlaceOrder($event)">
-  </app-registered-user>
-</mat-card>
+<div class="container" *ngIf="userName; else register">
+   <app-registered-user
+      class="container__registered-user"
+      [userName]="userName"
+      (placeOrder)="handlePlaceOrder($event)"
+   >
+   </app-registered-user>
+</div>
 <ng-template #register>
-  <mat-card class="container">
-    <app-error-message *ngIf="errorMessage" [color]="color">
-      <p class="text">{{ errorMessage }}</p>
-    </app-error-message>
-    <app-unregistered-user (userLogin)="handleLogin($event)">
-    </app-unregistered-user>
-  </mat-card>
+   <div class="container">
+      <app-error-message
+         *ngIf="errorMessage"
+         [color]="color"
+         class="container__error"
+      >
+         <p class="container__error__text">{{ errorMessage }}</p>
+      </app-error-message>
+      <app-unregistered-user
+         class="container__unregistered-user" 
+         (userLogin)="handleLogin($event)">
+      </app-unregistered-user>
+   </div>
 </ng-template>

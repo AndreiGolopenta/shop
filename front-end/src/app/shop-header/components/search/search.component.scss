@@ -1,26 +1,71 @@
-.example-form {
-  min-width: 150px;
-  max-width: 400px;
-  display: flex;
-  justify-content: center;
-  button {
-    margin-left: 10px;
-    height: 40px;
-    position: relative;
-    top: 15px;
-  }
-}
+@import '../../../../assets/SCSS/variables';
+@import '../../../../assets/SCSS/mixins';
 
-.example-full-width {
-  width: 90%;
-  font-size: 15px;
-  position: relative;
-  top: 12px;
-}
+.search-form {
+   position: relative;
 
-.product-image {
-  vertical-align: middle;
-  margin-right: 8px;
-  width: 30px;
-  height: auto;
+   &__container {
+      @include input-container;
+
+      &__icon {
+         @include input-icon;
+      }
+
+      &__label {
+         @include input-label;
+      }
+   }
+
+   &__list {
+      position: absolute;
+      z-index: 2;
+      min-height: 4rem;
+      max-height: 20rem;
+      width: 100%;
+      background-color: $color-grey-light-1;
+      border: 1px solid rgba($color-dark, 0.12);
+      box-shadow: $box-shadow-3;
+      border-radius: 0 0 4px 4px;
+      list-style: none;
+      display: none;
+      overflow: auto;
+
+      &::-webkit-scrollbar {
+         width: 0.7rem;
+         background-color: $color-grey-light-4;
+         border-radius: 0 0 4px 0;
+      }
+      &::-webkit-scrollbar-thumb {
+         background: $color-blue-primary;
+         border-radius: 4px;
+         cursor: pointer;
+      }
+
+      &--active {
+         display: block;
+      }
+
+      &__item {
+         font-size: 1.4rem;
+         padding: 1rem;
+         display: flex;
+         justify-content: flex-start;
+         align-items: center;
+
+         &__logo {
+            width: 3rem;
+            height: auto;
+            margin-right: 0.5rem;
+            cursor: pointer;
+         }
+
+         &__name {
+            cursor: pointer;
+         }
+
+         &__message {
+            padding: 1rem;
+         }
+      }
+   }
 }

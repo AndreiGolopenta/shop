@@ -1,44 +1,51 @@
 <div class="container">
-  <div class="user-profile">
-    <span 
-      class="account"
-      [ngClass]="{'active': userToken }"
-      (click)="userAccount()">
-      My Account
-      <i class="material-icons">keyboard_arrow_down</i>
-    </span>
-    <span> | </span>
-    <span
-      *ngIf="!userToken; else logout" 
-      class="login" 
-      (click)="logIn()">
-      Login
-      <i class="material-icons">keyboard_arrow_down</i>
-    </span>
-    <ng-template #logout>
-      <span 
-        class="login"
-        (click)="logoutAction()">
-        Logout
-        <i class="material-icons">keyboard_arrow_down</i>
-      </span>
-    </ng-template>
-  </div>
-  <i
-    [@cart]="cartAnimation ? 'initial' : 'final'"
-    class="material-icons cart-logo"
-    [matBadge]="cartQuantity"
-    matBadgeColor="warn"
-    (click)="viewCart()"
-  >
-    shopping_cart
-  </i>
-  <div class="price">
-    <span></span>
-    <h2 (click)="viewCart()">CART</h2>
-    <span class="price-info"
-      >{{ cartQuantity }} Articles |
-      {{ cartTotal == 0 ? '0.00' : cartTotal }} &euro;</span
-    >
-  </div>
+   <div class="container__user-profile">
+      <a
+         class="container__user-profile__account"
+         [ngClass]="{
+            'container__user-profile__account--active': userToken
+         }"
+         (click)="userAccount()"
+      >
+         My Account
+         <i class="material-icons">keyboard_arrow_down</i>
+      </a>
+      <span>|</span>
+      <a
+         *ngIf="!userToken; else logout"
+         (click)="logIn()"
+         class="container__user-profile__login"
+      >
+         Login
+         <i class="material-icons">keyboard_arrow_down</i>
+      </a>
+      <ng-template #logout>
+         <a class="container__user-profile__login" (click)="logoutAction()">
+            Logout
+            <i class="material-icons">keyboard_arrow_down</i>
+         </a>
+      </ng-template>
+   </div>
+   <div class="container__cart">
+      <div class="container__cart__logo">
+         <i
+            [@cart]="cartAnimation ? 'initial' : 'final'"
+            class="material-icons"
+            [matBadge]="cartQuantity"
+            matBadgeColor="warn"
+            (click)="viewCart()"
+         >
+            shopping_cart
+         </i>
+      </div>
+      <div class="container__cart__info">
+         <h2 class="container__cart__info__title">
+            Cart
+         </h2>
+         <span class="container__cart__info__price">
+            {{ cartQuantity }} Articles |
+            {{ cartTotal == 0 ? '0.00' : cartTotal }} &euro;
+         </span>
+      </div>
+   </div>
 </div>

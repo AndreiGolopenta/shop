@@ -1,14 +1,33 @@
-div {
-  position: absolute;
-  width: 95%;
-  top: 20px;
-  left: 20px;
-  span {
-    margin-left: 20px;
-    color: #545e6f;
-  }
-  strong {
-    width: 132px;
-    color: #545e6f;
-  }
+@import '../../../../assets/SCSS/variables';
+
+.description {
+   padding: 3rem;
+}
+
+.tab-name {
+   width: 24rem;
+}
+
+.fact-sheet {
+   list-style: none;
+   font-size: 1.3rem;
+   padding: 2rem 3rem 3rem;
+
+   &__entry {
+      width: 100%;
+      padding: 1rem 0;
+      display: flex;
+
+      &__fact-name {
+         flex: 0 1 17rem;
+      }
+
+      &__fact {
+         flex: 1;
+      }
+
+      &:not(:last-child) {
+         border-bottom: 1px solid $color-grey-light-4;
+      }
+   }
 }

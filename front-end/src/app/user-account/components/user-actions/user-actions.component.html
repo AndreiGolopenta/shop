@@ -1,11 +1,12 @@
 <div class="actions">
-  <button
-    *ngFor="let action of userActions"
-    mat-stroked-button
-    [routerLink]="action.route"
-    [routerLinkActiveOptions]="{ exact: action.exact }"
-    routerLinkActive="active"
-  >
-    {{ action.name }}
-  </button>
+   <button
+      matRipple
+      class="actions__button"
+      *ngFor="let action of userActions"
+      [routerLink]="action.route"
+      [routerLinkActiveOptions]="{ exact: action.exact }"
+      routerLinkActive="actions__button--active"
+   >
+      {{ action.name }}
+   </button>
 </div>

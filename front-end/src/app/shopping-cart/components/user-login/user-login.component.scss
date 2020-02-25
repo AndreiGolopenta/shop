@@ -1,11 +1,38 @@
-@import '../../../../partial';
+@import '../../../../assets/SCSS/mixins';
 
 .container {
-  box-shadow: $box-shadow;
-  .text {
-    font-size: 15px;
-    font-weight: 400;
-    color: #545e6f;
-    padding-right: 25px;
-  }
+   display: flex;
+   flex-wrap: wrap;
+
+   &__registered-user {
+      margin-left: auto;
+      padding: 2rem;
+
+      @include respond(breakpoint-7) {
+         margin: 0 auto;
+      }
+   }
+
+   &__error {
+      flex: 0 1 50%;
+      margin: 3rem auto;
+
+      @include respond(breakpoint-6) {
+         &__text {
+            padding-top: 0.2rem;
+            margin-left: 0.5rem;
+         }
+      }
+
+      @include respond(breakpoint-2) {
+         flex: 0 1 85%;
+      }
+   }
+   &__unregistered-user {
+      flex: 0 1 100%;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      min-height: 32rem;
+   }
 }

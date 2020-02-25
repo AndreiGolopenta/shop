@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AngularMaterialModule } from './angular-material.module';
 import { ShopHeaderModule } from './shop-header/shop-header.module';
+import { NavigationModule } from './navigation/navigation.module';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -43,7 +44,8 @@ const ROUTES: Routes = [
     EffectsModule.forRoot(effects),
     StoreDevtoolsModule.instrument(),
     AngularMaterialModule,
-    ShopHeaderModule
+    ShopHeaderModule,
+    NavigationModule
   ],
   bootstrap: [AppComponent]
 })
